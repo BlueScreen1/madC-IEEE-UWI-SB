@@ -1,20 +1,35 @@
 package bluescreen1.ieeeuwisb;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 /**
  * Created by Dane on 3/2/2015.
  */
-public class LoginActivity extends FragmentActivity {
+public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.SignUpDialogListener, Sign_In_Fragment.LoginDialogListener {
 
     ImageView login_image;
     private static int logo_state = 0;
     Button login, signup;
+    Intent intent;
+    private String username = "ERROR";
+    private String password = "ERROR";
+
+    private String su_username = "ERROR";
+    private String su_password = "ERROR";
+    private String su_email = "ERROR";
+    private String su_ieeenum = "ERROR";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +69,7 @@ public class LoginActivity extends FragmentActivity {
                 sign_up_dialog.show(getSupportFragmentManager(),"Sign Up");
             }
         });
-
+        intent = new Intent(LoginActivity.this, test_main.class);
 
     }
 
@@ -67,4 +82,71 @@ public class LoginActivity extends FragmentActivity {
     protected void onStop() {
         super.onStop();
     }
+
+
+    @Override
+    public void onLoginDialogPositiveClick(DialogFragment dialog) {
+
+        intent.putExtra("username", username);
+        intent.putExtra("password", password);
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
+            public void done(ParseUser user, ParseException e) {
+                if (user != null) {
+                    Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Fail", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+        startActivity(intent);
+    }
+
+    @Override
+    public void onLoginDialogNegativeClick(DialogFragment dialog) {
+        Toast.makeText(this, "SIGN IN Cancel", Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void onSignUpDialogPositiveClick(DialogFragment dialog) {
+        ParseUser user = new ParseUser();
+        user.setUsername(su_username);
+        user.setPassword(su_password);
+        user.setEmail(su_email);
+
+// other fields can be set just like with ParseObject
+        user.put("ieeenum", su_ieeenum);
+
+        user.signUpInBackground(new SignUpCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    Toast.makeText(LoginActivity.this, "Yay you are registered", Toast.LENGTH_LONG).show();
+                } else {
+                    // Sign up didn't succeed. Look at the ParseException
+                    // to figure out what went wrong
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onSignUpDialogNegativeClick(DialogFragment dialog) {
+        Toast.makeText(this, "SIGN IN Cancel", Toast.LENGTH_LONG).show();
+    }
+
+
+    public void setData(String username, String Password){
+
+        this.username= username;
+        this.password = Password;
+    }
+
+    public void signUp(String username, String password, String ieeenum, String email){
+        su_email = email;
+        su_ieeenum = ieeenum;
+        su_username = username;
+        su_password = password;
+    }
+
 }
