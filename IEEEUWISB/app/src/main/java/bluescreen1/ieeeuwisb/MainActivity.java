@@ -21,7 +21,12 @@ public class MainActivity extends ActionBarActivity
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
-
+    public static final String[] headings = new String[] {"Account", "Feed", "Groups", "IEEE", "Meetings", "Contact Us"};
+    public static final int[] icons = new int[]{R.drawable.ic_launcher,
+                                                R.drawable.ic_launcher,
+                                                R.drawable.ic_launcher,
+                                                R.drawable.ic_launcher,
+                                                R.drawable.ic_launcher};
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
@@ -52,7 +57,7 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void onSectionAttached(int number) {
-        switch (number) {
+        /*switch (number) {
             case 1:
                 mTitle = getString(R.string.title_section1);
                 break;
@@ -62,7 +67,8 @@ public class MainActivity extends ActionBarActivity
             case 3:
                 mTitle = getString(R.string.title_section3);
                 break;
-        }
+        }*/
+        mTitle = headings[number-1];
     }
 
     public void restoreActionBar() {

@@ -6,10 +6,8 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -72,7 +70,7 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
                 sign_up_dialog.show(getSupportFragmentManager(),"Sign Up");
             }
         });
-        intent = new Intent(LoginActivity.this, test_main.class);
+        intent = new Intent(LoginActivity.this, MainActivity.class);
 
     }
 
@@ -90,19 +88,20 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
     @Override
     public void onLoginDialogPositiveClick(DialogFragment dialog) {
 
-        intent.putExtra("username", username);
-        intent.putExtra("password", password);
+        //intent.putExtra("username", username);
+        //intent.putExtra("password", password);
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
                     Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_LONG).show();
+                    startActivity(intent);
+
                 } else {
                     Toast.makeText(LoginActivity.this, "Fail", Toast.LENGTH_LONG).show();
 
                 }
             }
         });
-        startActivity(intent);
     }
 
     @Override
