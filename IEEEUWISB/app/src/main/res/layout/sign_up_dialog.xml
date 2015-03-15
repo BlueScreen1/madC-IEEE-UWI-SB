@@ -9,7 +9,7 @@
         android:textSize="30sp"
         android:scaleType="center"
         android:gravity="center"
-        android:background="@color/medium_grey"
+        android:background="@color/medium_light_blue"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:contentDescription="@string/app_name" />
