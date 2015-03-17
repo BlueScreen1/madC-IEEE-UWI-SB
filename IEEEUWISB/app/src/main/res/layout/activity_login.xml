@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:gravity="center_horizontal"
     android:orientation="vertical" tools:context=".LoginActivity"
-    android:background="#89a9ee">
+    android:maxWidth="400dp"
+    android:background="#1455e1">
 
     <!-- Login progress -->
 
@@ -14,6 +15,7 @@
 
         android:padding="15dp">
         <ImageView
+            android:layout_marginRight="10dp"
             android:id="@+id/logo_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
