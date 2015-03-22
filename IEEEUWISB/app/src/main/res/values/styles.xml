@@ -4,12 +4,21 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 
         <item name="android:editTextStyle">@style/et</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+
     </style>
 
     <style name="et" parent="@android:style/Widget.EditText">
         <item name="colorAccent">@color/light_blue</item>
         <item name="android:textColorHint">#ff1c386d</item>
 
+    </style>
+
+
+
+    <style name="MyActionBar"
+        parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/light_blue</item>
     </style>
 
 </resources>
