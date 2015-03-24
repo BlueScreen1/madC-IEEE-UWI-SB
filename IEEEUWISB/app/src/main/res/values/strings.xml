@@ -12,4 +12,15 @@
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- IEEE String Constants-->
+    <string name="what_ieee">What is IEEE?</string>
+    <string name="what_ieee_description">The IEEE (Institute of Electrical and Electronics Engineers) is "the world's largest technical professional society --promoting the development and application of electrotechnology and allied sciences for the benefit of humanity, the advancement of the profession, and the well-being of our members."</string>
+    <string name="benefits_ieee">What are the benefits of IEEE membership?</string>
+    <string name="benefits_ieee_description">As a student member of the IEEE you will be afforded a multitude of resources such as:\n
+    &#8226; Access to IEEE student competitions.\n
+    &#8226; IEEE scholarships awards and fellowships.\n
+    &#8226; IEEE potentials magazine.\n
+    &#8226; Affiliation with and support from a knowledgeable professional community.
+    </string>
 </resources>
