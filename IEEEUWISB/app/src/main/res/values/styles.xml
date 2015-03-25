@@ -21,4 +21,12 @@
         <item name="android:background">@color/light_blue</item>
     </style>
 
+    <style name = "IEEEHeading" parent="android:Widget.TextView">
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="IEEEDescription" parent="android:Widget.TextView">
+        <item name="android:padding">20dp</item>
+    </style>
+
 </resources>

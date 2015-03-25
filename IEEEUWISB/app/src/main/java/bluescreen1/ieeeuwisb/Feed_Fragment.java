@@ -84,7 +84,7 @@ public class Feed_Fragment extends MainActivity.PlaceholderFragment {
                 getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
-    private static class FeedItem{
+   private static class FeedItem{
         private String title;
         private String desc;
 

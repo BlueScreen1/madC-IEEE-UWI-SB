@@ -108,7 +108,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:id="@+id/button"
+        android:id="@+id/editUser"
         android:background="@drawable/wrench"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/acctGroups"

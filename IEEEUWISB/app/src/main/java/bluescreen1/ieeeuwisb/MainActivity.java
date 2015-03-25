@@ -54,22 +54,43 @@ public class MainActivity extends ActionBarActivity
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         switch (position) {
+
+            /*
+            case 0:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, Account_Fragment.newInstance())
+                        .commit();
+                        */
+
+
             case 1:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, Feed_Fragment.newInstance(position + 1))
                         .commit();
                 break;
-/*            case 2:
+            /*
+            case 2:
                 fragmentManager.beginTransaction()
-                          .replace(R.id.container, Account_Fragment.newInstance(position - 1))
-                         .commit();
-                break;
-              case 3:
-               fragmentManager.beginTransaction()
-                          .replace(R.id.container, Meetings_Fragment.newInstance(position - 1))
+                          .replace(R.id.container, Groups_Fragment.newInstance())
                          .commit();
                 break;
                 */
+
+            case 3:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container , IEEE_Fragment.newInstance())
+                        .commit();
+                break;
+            case 4:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, Meetings_Fragment.newInstance())
+                        .commit();
+                break;
+            /*case 5:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, ContactUs_Fragment.newInstance())
+                        .commit();
+                        */
             default:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
