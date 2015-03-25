@@ -1,8 +1,9 @@
-package bluescreen1.ieeeuwisb;
+package bluescreen1.ieeeuwisb.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import bluescreen1.ieeeuwisb.MainActivity;
+import bluescreen1.ieeeuwisb.R;
+
 /**
  * Created by Dane on 3/24/2015.
  */
-public class Feed_Fragment extends MainActivity.PlaceholderFragment {
+public class Feed_Fragment extends Fragment {
 
     private static final String[] titles = {"Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"};
     private static final String[] values = {"Lorem ipsum farsdjkgkdf ldaskjh fkashdf sdlkf ahasdyfl nasdkjf dasljf hasdjfasm",

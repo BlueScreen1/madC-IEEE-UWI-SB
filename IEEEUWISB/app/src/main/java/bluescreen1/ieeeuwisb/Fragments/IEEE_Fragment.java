@@ -1,4 +1,4 @@
-package bluescreen1.ieeeuwisb;
+package bluescreen1.ieeeuwisb.Fragments;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,11 +10,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import bluescreen1.ieeeuwisb.MainActivity;
+import bluescreen1.ieeeuwisb.R;
+
 public class IEEE_Fragment extends Fragment {
 
+    private static final String ARG_SECTION_NUMBER = "section_number";
 
-    public static IEEE_Fragment newInstance() {
+    public static IEEE_Fragment newInstance(int sectionNumber) {
         IEEE_Fragment fragment = new IEEE_Fragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -52,6 +59,8 @@ public class IEEE_Fragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+        ((MainActivity) activity).onSectionAttached(
+                getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
     public IEEE_Fragment(){

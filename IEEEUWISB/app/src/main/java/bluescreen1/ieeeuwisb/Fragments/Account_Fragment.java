@@ -1,28 +1,34 @@
-package bluescreen1.ieeeuwisb;
+package bluescreen1.ieeeuwisb.Fragments;
 
 import android.app.Activity;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.parse.ParseUser;
+import bluescreen1.ieeeuwisb.MainActivity;
+import bluescreen1.ieeeuwisb.R;
 
 /**
  * Created by Jus on 3/24/2015.
  */
 public class Account_Fragment extends Fragment {
 
-    ParseUser user;
+    //ParseUser user;
+    private static final String ARG_SECTION_NUMBER = "section_number";
+
 
     public Account_Fragment() {
 
     }
-    public static Account_Fragment newInstance() {
+    public static Account_Fragment newInstance(int sectionNumber) {
         Account_Fragment fragment = new Account_Fragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -30,7 +36,7 @@ public class Account_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.account_layout, container, false);
         TextView username = (TextView) rootView.findViewById(R.id.userName);
-        username.setText(user.getUsername());
+        //username.setText(user.getUsername());
         Button editUser = (Button) rootView.findViewById(R.id.editUser);
         editUser.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -44,5 +50,7 @@ public class Account_Fragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+        ((MainActivity) activity).onSectionAttached(
+                getArguments().getInt(ARG_SECTION_NUMBER));
     }
 }

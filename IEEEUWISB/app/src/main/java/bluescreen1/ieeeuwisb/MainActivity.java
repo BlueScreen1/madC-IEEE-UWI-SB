@@ -13,6 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import bluescreen1.ieeeuwisb.Fragments.Account_Fragment;
+import bluescreen1.ieeeuwisb.Fragments.Feed_Fragment;
+import bluescreen1.ieeeuwisb.Fragments.IEEE_Fragment;
+import bluescreen1.ieeeuwisb.Fragments.Meetings_Fragment;
+
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -22,11 +27,7 @@ public class MainActivity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
     public static final String[] headings = new String[] {"Account", "Feed", "Groups", "IEEE", "Meetings", "Contact Us"};
-    public static final int[] icons = new int[]{R.drawable.ic_launcher,
-                                                R.drawable.ic_launcher,
-                                                R.drawable.ic_launcher,
-                                                R.drawable.ic_launcher,
-                                                R.drawable.ic_launcher};
+
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
@@ -55,12 +56,12 @@ public class MainActivity extends ActionBarActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         switch (position) {
 
-            /*
+
             case 0:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, Account_Fragment.newInstance())
+                        .replace(R.id.container, Account_Fragment.newInstance(position + 1))
                         .commit();
-                        */
+                break;
 
 
             case 1:
@@ -78,12 +79,12 @@ public class MainActivity extends ActionBarActivity
 
             case 3:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container , IEEE_Fragment.newInstance())
+                        .replace(R.id.container , IEEE_Fragment.newInstance(position + 1))
                         .commit();
                 break;
             case 4:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, Meetings_Fragment.newInstance())
+                        .replace(R.id.container, Meetings_Fragment.newInstance(position + 1))
                         .commit();
                 break;
             /*case 5:
