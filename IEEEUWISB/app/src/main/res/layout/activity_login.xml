@@ -3,7 +3,7 @@
     android:layout_height="match_parent" android:gravity="center_horizontal"
     android:orientation="vertical" tools:context=".LoginActivity"
     android:maxWidth="400dp"
-    android:background="#1455e1">
+    android:background="@color/dark_blue">
 
     <!-- Login progress -->
 

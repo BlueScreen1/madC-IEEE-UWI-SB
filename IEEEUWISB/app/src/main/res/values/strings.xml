@@ -13,6 +13,7 @@
 
     <string name="action_settings">Settings</string>
 
+
     <!-- IEEE String Constants-->
     <string name="what_ieee">What is IEEE?</string>
     <string name="what_ieee_description">The IEEE (Institute of Electrical and Electronics Engineers) is "the world's largest technical professional society --promoting the development and application of electrotechnology and allied sciences for the benefit of humanity, the advancement of the profession, and the well-being of our members."</string>
@@ -23,4 +24,67 @@
     &#8226; IEEE potentials magazine.\n
     &#8226; Affiliation with and support from a knowledgeable professional community.
     </string>
+    <string name="what_societies_ieee">What societies can I be a part of?</string>
+
+    <string name="societies_list_1">
+        &#8226; IEEE Aerospace and Electronic Systems Society\n
+        &#8226; IEEE Antennas and Propagation Society\n
+        &#8226; IEEE Broadcast Technology Society\n
+        &#8226; IEEE Communications Society\n
+        &#8226; IEEE Components, Packaging, and Manufacturing Technology Society\n
+        &#8226; IEEE Computational Intelligence Society\n
+        &#8226; IEEE Computer Society\n
+        &#8226; IEEE Consumer Electronics Society\n
+        &#8226; IEEE Control Systems Society\n
+        &#8226; IEEE Dielectrics and Electrical Insulation Society\n
+        &#8226; IEEE Education Society\n
+        &#8226; IEEE Electron Devices Society\n
+        &#8226; IEEE Electromagnetic Compatibility Society\n
+        &#8226; IEEE Engineering in Medicine and Biology Society\n
+        &#8226; IEEE Geoscience and Remote Sensing Society\n
+        &#8226; IEEE Industrial Electronics Society\n
+        &#8226; IEEE Industry Applications Society\n
+        &#8226; IEEE Information Theory Society\n
+        &#8226; IEEE Vehicular Technology Society\n
+        &#8226; IEEE Ultrasonics, Ferroelectrics, and Frequency Control Society\n
+    </string>
+    <string name="societies_list_2">
+       &#8226;  IEEE Instrumentation and Measurement Society\n
+       &#8226;  IEEE Intelligent Transportation Systems Society\n
+       &#8226;  IEEE Magnetics Society\n
+       &#8226;  IEEE Microwave Theory and Techniques Society\n
+       &#8226;  IEEE Nuclear and Plasma Sciences Society\n
+       &#8226;  IEEE Oceanic Engineering Society\n
+       &#8226;  IEEE Photonics Society\n
+       &#8226;  IEEE Power Electronics Society\n
+       &#8226;  IEEE Power &amp; Energy Society\n
+       &#8226;  IEEE Product Safety Engineering Society\n
+       &#8226;  IEEE Professional Communication Society\n
+       &#8226;  IEEE Reliability Society\n
+       &#8226;  IEEE Robotics and Automation Society\n
+       &#8226;  IEEE Signal Processing Society\n
+       &#8226;  IEEE Society on Social Implications of Technology\n
+       &#8226;  IEEE Solid-State Circuits Society\n
+       &#8226;  IEEE Systems, Man, and Cybernetics Society\n
+       &#8226;  IEEE Technology and Engineering Management Society\n
+    </string>
+    <string name="how_join">I\'m sold how do I join?</string>
+    <string name="how_join_desctiption">Just click the button on the left to begin membership or the button on the right to renew.</string>
+    <string name="join">Join</string>
+    <string name="renew">Renew</string>
+    <string name="join_url">https://www.ieee.org/membership-application/public/login/mymembershiplogin.html</string>
+    <string name="renew_url">https://www.ieee.org/membership_services/membership/renew/index_renew.html</string>
+
+    <!-- Other strings not made by Travis, respective creators(Dane) please label them appropriately -->
+    <string name="feed_filter_by">Filter :</string>
+
+    <string-array name="feed_array">
+        <item>All</item>
+        <item>Arduino</item>
+        <item>Software</item>
+        <item>Web Development</item>
+        <item>Raspberry Pi</item>
+
+    </string-array>
+
 </resources>

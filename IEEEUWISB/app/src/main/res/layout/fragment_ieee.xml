@@ -39,38 +39,52 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="What societies can I be a part of?"
+                android:text="@string/what_societies_ieee"
                 style="@style/IEEEHeading" />
-            <ListView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </ListView>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/societies_list_1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/societies_list_2"/>
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="I'm sold how can I join?"
+                android:text="@string/how_join"
                 style="@style/IEEEHeading" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Place Holder"
+                android:text="@string/how_join_desctiption"
                 style="@style/IEEEDescription"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
                 <Button
+                    android:id="@+id/join_button"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Join"
-                    android:gravity="center"/>
+                    android:text="@string/join"
+                    android:gravity="center"
+                    style="?android:attr/buttonBarButtonStyle"/>
                 <Button
+                    android:id="@+id/renew_button"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Renew"
-         />
+                    android:text="@string/renew"
+                    style="?android:attr/buttonBarButtonStyle"/>
             </LinearLayout>
 
         </LinearLayout>
