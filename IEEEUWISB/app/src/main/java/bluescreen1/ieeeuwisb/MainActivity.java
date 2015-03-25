@@ -59,6 +59,17 @@ public class MainActivity extends ActionBarActivity
                         .replace(R.id.container, Feed_Fragment.newInstance(position + 1))
                         .commit();
                 break;
+/*            case 2:
+                fragmentManager.beginTransaction()
+                          .replace(R.id.container, Account_Fragment.newInstance(position - 1))
+                         .commit();
+                break;
+              case 3:
+               fragmentManager.beginTransaction()
+                          .replace(R.id.container, Meetings_Fragment.newInstance(position - 1))
+                         .commit();
+                break;
+                */
             default:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))

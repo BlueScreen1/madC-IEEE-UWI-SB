@@ -4,4 +4,5 @@
     android:divider="@android:color/transparent" android:dividerHeight="0dp"
     android:background="@color/black"
     android:textColor="@color/white"
+    android:orientation="vertical"
     tools:context="bluescreen1.ieeeuwisb.NavigationDrawerFragment" />
