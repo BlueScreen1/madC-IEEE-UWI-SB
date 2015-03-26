@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,13 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
@@ -21,25 +28,14 @@ import bluescreen1.ieeeuwisb.R;
  * Created by Dane on 3/24/2015.
  */
 public class Feed_Fragment extends Fragment {
+    private ListView feedView;
+    private ArrayList<ParseObject> feedItems =  new ArrayList<>();
+    private void setData(List<ParseObject> hi){
+        for(ParseObject x: hi){
 
-    private static final String[] titles = {"Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"};
-    private static final String[] values = {"Lorem ipsum farsdjkgkdf ldaskjh fkashdf sdlkf ahasdyfl nasdkjf dasljf hasdjfasm",
-            "Lorem ipsum farsdjkgkdf ldaskjh fkashdf sdlkf ahasdyfl nasdkjf dasljf hasdjfasm",
-            "Lorem ipsum farsdjkgkdf ldaskjh fkashdf sdlkf ahasdyfl nasdkjf dasljf hasdjfasm",
-            "Lorem ipsum farsdjkgkdf ldaskjh fkashdf sdlkf ahasdyfl nasdkjf dasljf hasdjfasm",
-            "Lorem ipsum farsdjkgkdf ldaskjh fkashdf sdlkf ahasdyfl nasdkjf dasljf hasdjfasm",
-            "Lorem ipsum farsdjkgkdf ldaskjh fkashdf sdlkf ahasdyfl nasdkjf dasljf hasdjfasm",
-            "Lorem ipsum farsdjkgkdf ldaskjh fkashdf sdlkf ahasdyfl nasdkjf dasljf hasdjfasm"};
-
-    //private static FeedItem[] items = new FeedItem[7];
-    private ArrayList<FeedItem> items = new ArrayList<FeedItem>();
-    private void setData(){
-        FeedItem temp;
-        int x;
-        for(x = 0; x<7; x++){
-            temp = new FeedItem(titles[x], values[x]);
-            items.add(temp);
+            feedItems.add(x);
         }
+        feedView.setAdapter(new FeedAdapter(getActivity(), R.layout.feed_item, feedItems ));
 
     }
 
@@ -57,17 +53,18 @@ public class Feed_Fragment extends Fragment {
         return fragment;
     }
 
+
     public Feed_Fragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        setData();
+
         View rootView = inflater.inflate(R.layout.feed_layout, container, false);
         Spinner spinner = (Spinner) rootView.findViewById(R.id.feed_spinner);
 
-        ListView feedView = (ListView) rootView.findViewById(R.id.feed_list_view);
+        feedView = (ListView) rootView.findViewById(R.id.feed_list_view);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.feed_array, android.R.layout.simple_spinner_item);
@@ -76,7 +73,18 @@ public class Feed_Fragment extends Fragment {
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-        feedView.setAdapter(new FeedAdapter(getActivity(), R.layout.feed_item, items ));
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Messages");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> fList, ParseException e) {
+                if (e == null) {
+                    //Log.d("score", "Retrieved " + fList.size() + " scores");
+                    setData(fList);
+                } else {
+                    Log.d("score", "Error: " + e.getMessage());
+                }
+            }
+        });
+
 
         return rootView;
     }
@@ -88,40 +96,13 @@ public class Feed_Fragment extends Fragment {
                 getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
-   private static class FeedItem{
-        private String title;
-        private String desc;
-
-
-        private FeedItem(String title, String desc) {
-            this.title = title;
-            this.desc = desc;
-        }
-
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getDesc() {
-            return desc;
-        }
-
-        public void setDesc(String desc) {
-            this.desc = desc;
-        }
-    }
-   private class FeedAdapter extends ArrayAdapter<FeedItem> {
+   private class FeedAdapter extends ArrayAdapter<ParseObject> {
         private Context con;
 
-        private ArrayList<FeedItem> values;
+        private ArrayList<ParseObject> values;
         private LayoutInflater inflater;
 
-       public FeedAdapter(Context context, int res, ArrayList<FeedItem> values){
+       public FeedAdapter(Context context, int res, ArrayList<ParseObject> values){
            super(context, res, values);
 
            this.con = context;
@@ -132,11 +113,11 @@ public class Feed_Fragment extends Fragment {
 
        @Override
        public int getCount() {
-           return titles.length;
+           return values.size();
        }
 
        @Override
-       public FeedItem getItem(int position) {
+       public ParseObject getItem(int position) {
            return values.get(position);
        }
 
@@ -156,10 +137,10 @@ public class Feed_Fragment extends Fragment {
 
             TextView title = (TextView) vi.findViewById(R.id.feed_item_title);
 
-            title.setText(getItem(position).getTitle());
+            title.setText(getItem(position).get("title").toString());
 
             TextView desc = (TextView) vi.findViewById(R.id.feed_item_desc);
-            desc.setText(getItem(position).getDesc());
+            desc.setText(getItem(position).get("content").toString());
 
             return vi;
         }
