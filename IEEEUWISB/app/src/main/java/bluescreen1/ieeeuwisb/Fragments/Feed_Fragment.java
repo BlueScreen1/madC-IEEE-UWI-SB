@@ -8,10 +8,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -27,9 +29,16 @@ import bluescreen1.ieeeuwisb.R;
 /**
  * Created by Dane on 3/24/2015.
  */
-public class Feed_Fragment extends Fragment {
+public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelectedListener{
     private ListView feedView;
+    private int option;
+    private String filter;
     private ArrayList<ParseObject> feedItems =  new ArrayList<>();
+
+    private void setFilter(int option, String filter){
+        this.option = option;
+        this.filter = filter;
+    }
     private void setData(List<ParseObject> hi){
         for(ParseObject x: hi){
 
@@ -70,10 +79,18 @@ public class Feed_Fragment extends Fragment {
                 R.array.feed_array, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
+/* Apply the adapter to the spinner */
         spinner.setAdapter(adapter);
-
+        spinner.setOnItemSelectedListener(this);
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Messages");
+        switch(option){
+            case 0:
+                break;
+            default:
+                query.whereEqualTo("group", filter);
+                break;
+
+        }
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> fList, ParseException e) {
                 if (e == null) {
@@ -96,7 +113,18 @@ public class Feed_Fragment extends Fragment {
                 getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
-   private class FeedAdapter extends ArrayAdapter<ParseObject> {
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(getActivity(),""+parent.getItemAtPosition(position).toString(),Toast.LENGTH_LONG).show();
+        setFilter(position,parent.getItemAtPosition(position).toString() );
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    private class FeedAdapter extends ArrayAdapter<ParseObject> {
         private Context con;
 
         private ArrayList<ParseObject> values;

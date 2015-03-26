@@ -1,15 +1,16 @@
-package bluescreen1.ieeeuwisb;
+package bluescreen1.ieeeuwisb.Login;
         import android.app.Activity;
         import android.app.AlertDialog;
         import android.app.Dialog;
         import android.content.DialogInterface;
-        import android.graphics.Color;
         import android.os.Bundle;
         import android.support.v4.app.DialogFragment;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.widget.EditText;
         import android.widget.Toast;
+
+        import bluescreen1.ieeeuwisb.R;
 
 /**
  * Created by Dane on 3/8/2015.

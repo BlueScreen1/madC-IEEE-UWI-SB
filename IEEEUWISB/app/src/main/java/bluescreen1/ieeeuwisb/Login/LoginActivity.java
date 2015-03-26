@@ -1,4 +1,4 @@
-package bluescreen1.ieeeuwisb;
+package bluescreen1.ieeeuwisb.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import bluescreen1.ieeeuwisb.MainActivity;
+import bluescreen1.ieeeuwisb.R;
 
 
 /**
