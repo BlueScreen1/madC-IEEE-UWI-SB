@@ -13,6 +13,12 @@
 
     <string name="action_settings">Settings</string>
 
+    <!--Account Strings-->
+    <string name="UserName">Username</string>
+    <string name="Email">Email</string>
+    <string name="IEEENumber">IEEE Number</string>
+    <string name="Groups">Groups</string>
+
 
     <!-- IEEE String Constants-->
     <string name="what_ieee">What is IEEE?</string>
@@ -74,6 +80,10 @@
     <string name="renew">Renew</string>
     <string name="join_url">https://www.ieee.org/membership-application/public/login/mymembershiplogin.html</string>
     <string name="renew_url">https://www.ieee.org/membership_services/membership/renew/index_renew.html</string>
+
+    <!--Meetings Strings-->
+    <string name="Upcoming_meetings">Upcoming meetings</string>
+    <string name="Past_meetings">Past meetings</string>
 
     <!-- Other strings not made by Travis, respective creators(Dane) please label them appropriately -->
     <string name="feed_filter_by">Filter :</string>
