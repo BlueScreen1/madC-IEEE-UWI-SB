@@ -13,11 +13,20 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:id="@+id/upMeetings" />
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/upmeetings_list"
-        android:layout_weight="0.31" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/upmeeting"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/timer"
+        android:layout_gravity="center_horizontal" />
 
     <TextView
         android:layout_width="250dp"
@@ -27,7 +36,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:id="@+id/pastMeetings"
-        android:layout_below="@id/upmeetings_list"/>
+        android:layout_below="@id/timer"/>
 
     <ListView
         android:layout_width="match_parent"

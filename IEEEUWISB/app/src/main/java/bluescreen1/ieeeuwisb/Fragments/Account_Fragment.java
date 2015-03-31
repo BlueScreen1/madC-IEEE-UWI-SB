@@ -20,7 +20,6 @@ import bluescreen1.ieeeuwisb.R;
  */
 public class Account_Fragment extends Fragment {
 
-    //ParseUser user;
     private static final String ARG_SECTION_NUMBER = "section_number";
 
 
