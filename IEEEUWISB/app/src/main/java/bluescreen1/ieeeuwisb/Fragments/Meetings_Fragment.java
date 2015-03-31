@@ -2,6 +2,7 @@ package bluescreen1.ieeeuwisb.Fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,11 +27,11 @@ import bluescreen1.ieeeuwisb.R;
  */
 public class Meetings_Fragment  extends Fragment {
 
+    CountDownTimer counter;
     ListView pastMeetings;
     ListView upcomingMeetings;
     ArrayList<String> datesPast = new ArrayList<>();
     ArrayList<String> datesUpc = new ArrayList<>();
-
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -38,11 +39,11 @@ public class Meetings_Fragment  extends Fragment {
 
         for(ParseObject p: parseList){
 
+            datesPast.add(p.getString("topic"));
             datesPast.add(p.getDate("date").toString());
-
         }
 
-        pastMeetings.setAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,datesPast));
+        pastMeetings.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, datesPast));
 
     }
 
@@ -50,12 +51,22 @@ public class Meetings_Fragment  extends Fragment {
 
         for(ParseObject p: parseList){
 
+            datesUpc.add(p.getString("topic"));
             datesUpc.add(p.getDate("date").toString());
+            counter = new CountDownTimer(p.getDate("date").getTime(),1000){
+                @Override
+                public void onTick(long millsUntilFinished){
+                    datesUpc.add(((millsUntilFinished/(1000*60*60))%24) + " hours remaining");
+                }
+                @Override
+                public void onFinish(){
+                    datesUpc.add("");
+                }
+            };
+            counter.start();
 
         }
-
         upcomingMeetings.setAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,datesUpc));
-
     }
 
     public static Meetings_Fragment newInstance(int sectionNumber) {
@@ -74,7 +85,6 @@ public class Meetings_Fragment  extends Fragment {
         View rootView = inflater.inflate(R.layout.meetings_layout, container, false);
         upcomingMeetings = (ListView) rootView.findViewById(R.id.upmeetings_list);
         pastMeetings = (ListView) rootView.findViewById(R.id.pastmeetings_list);
-
         ParseQuery query = new ParseQuery("Meetings");
         ParseQuery query2 = new ParseQuery("Meetings");
         query2.whereGreaterThan("date", new Date() );
@@ -85,15 +95,14 @@ public class Meetings_Fragment  extends Fragment {
                 get_data(list);
             }
         });
-
         query2.findInBackground(new FindCallback() {
             @Override
             public void done(List list, ParseException e) {
                 get_data2(list);
             }
         });
-
         return rootView;
+
     }
 
     @Override

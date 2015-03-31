@@ -56,7 +56,7 @@ public class Account_Fragment extends Fragment {
 
         } else {
             // show the signup or login screen
-            Toast.makeText(getActivity(),"You arent signed in",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),"You aren't signed in",Toast.LENGTH_LONG).show();
         }
         return rootView;
     }

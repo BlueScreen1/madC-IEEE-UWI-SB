@@ -26,6 +26,5 @@ dependencies {
     compile files('libs/svg-android.jar')
     compile 'com.nhaarman.supertooltips:library:3.0.+'
     compile 'com.parse.bolts:bolts-android:1.1.4'
-    compile 'com.mobsandgeeks:android-saripaar:1.0.3'
     compile fileTree(dir: 'libs', include: 'Parse-*.jar')
 }
