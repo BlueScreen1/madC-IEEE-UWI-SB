@@ -102,8 +102,6 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
     @Override
     public void onLoginDialogPositiveClick(DialogFragment dialog) {
 
-        //intent.putExtra("username", username);
-        //intent.putExtra("password", password);
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
