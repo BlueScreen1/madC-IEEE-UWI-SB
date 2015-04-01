@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import bluescreen1.ieeeuwisb.Fragments.Account_Fragment;
 import bluescreen1.ieeeuwisb.Fragments.Feed_Fragment;
+import bluescreen1.ieeeuwisb.Fragments.Groups_Fragment;
 import bluescreen1.ieeeuwisb.Fragments.IEEE_Fragment;
 import bluescreen1.ieeeuwisb.Fragments.Meetings_Fragment;
 
@@ -69,13 +70,13 @@ public class MainActivity extends ActionBarActivity
                         .replace(R.id.container, Feed_Fragment.newInstance(position + 1))
                         .commit();
                 break;
-            /*
+
             case 2:
                 fragmentManager.beginTransaction()
-                          .replace(R.id.container, Groups_Fragment.newInstance())
+                          .replace(R.id.container, Groups_Fragment.newInstance(position + 1))
                          .commit();
                 break;
-                */
+
 
             case 3:
                 fragmentManager.beginTransaction()

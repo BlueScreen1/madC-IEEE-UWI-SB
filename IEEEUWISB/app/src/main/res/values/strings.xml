@@ -82,8 +82,8 @@
     <string name="renew_url">https://www.ieee.org/membership_services/membership/renew/index_renew.html</string>
 
     <!--Meetings Strings-->
-    <string name="Upcoming_meeting">Upcoming meetings</string>
-    <string name="Past_meetings">Past meetings</string>
+    <string name="Upcoming_meeting">Upcoming</string>
+    <string name="Past_meetings">Past</string>
 
     <!-- Other strings not made by Travis, respective creators(Dane) please label them appropriately -->
     <string name="feed_filter_by">Filter :</string>
