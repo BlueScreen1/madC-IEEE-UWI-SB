@@ -4,9 +4,7 @@ import android.app.Application;
 
 import com.parse.Parse;
 
-/**
- * Created by Dane on 3/9/2015.
- */
+
 public class main_application extends Application {
 
 

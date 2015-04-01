@@ -23,14 +23,14 @@ import java.util.List;
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
-/**
- * Created by Jus on 3/24/2015.
- */
 public class Meetings_Fragment  extends Fragment {
 
     CountDownTimer counter;
     ListView pastMeetings;
-    TextView upcomingMeetings;
+    TextView upcomingMeetingName;
+    TextView upcomingMeetingLocation;
+    TextView upcomingMeetingDate;
+    TextView upcomingMeetingDesc;
     TextView timer;
     ArrayList<String> datesPast = new ArrayList<>();
 
@@ -45,7 +45,6 @@ public class Meetings_Fragment  extends Fragment {
         }
 
         pastMeetings.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, datesPast));
-
     }
 
 
@@ -60,10 +59,12 @@ public class Meetings_Fragment  extends Fragment {
 
     }
 
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.meetings_layout, container, false);
-        upcomingMeetings = (TextView) rootView.findViewById(R.id.upmeeting);
+        upcomingMeetingName = (TextView) rootView.findViewById(R.id.upmeetingname);
+        upcomingMeetingLocation = (TextView) rootView.findViewById(R.id.upmeetinglocation);
+        upcomingMeetingDate = (TextView) rootView.findViewById(R.id.upmeetingdate);
+        upcomingMeetingDesc = (TextView) rootView.findViewById(R.id.upmeetingdesc);
         pastMeetings = (ListView) rootView.findViewById(R.id.pastmeetings_list);
         final int[] hours = new int[1];
         final int[] minutes = new int[1];
@@ -84,20 +85,19 @@ public class Meetings_Fragment  extends Fragment {
             @Override
             public void done(List list, ParseException e) {
                 for (final ParseObject p : (List<ParseObject>)list) {
-                    upcomingMeetings.setText(p.getString("topic") +" at " + p.getString("location") + " on " + (p.getDate("date")));
-                                        //p.getDate("date").getTime(),
+                    upcomingMeetingName.setText(p.getString("topic"));
+                    upcomingMeetingLocation.setText(p.getString("location"));
+                    upcomingMeetingDate.setText(p.getDate("date").toString());
+                    upcomingMeetingDesc.setText(p.getString("description"));
                     Date now = new Date();
                     counter = new CountDownTimer(p.getDate("date").getTime()-now.getTime(), 1000) {
                         @Override
                         public void onTick(long millsUntilFinished) {
-
                             seconds[0] =(int) millsUntilFinished/1000;
                             minutes[0] = seconds[0] /60;
                             seconds[0] %= 60;
                             hours[0] = minutes[0]/60;
                             minutes[0] %= 60;
-
-
                             timer.setText(hours[0] + " hours, " + minutes[0] + " minutes, " +seconds[0] + " seconds");
                         }
 
@@ -111,12 +111,6 @@ public class Meetings_Fragment  extends Fragment {
             }
 
         });
-       /* query2.findInBackground(new FindCallback() {
-            @Override
-            public void done(List list, ParseException e) {
-                get_data2(list);
-            }
-        });*/
         return rootView;
 
     }

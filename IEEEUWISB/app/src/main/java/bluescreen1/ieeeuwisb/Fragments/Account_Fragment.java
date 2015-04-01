@@ -15,9 +15,6 @@ import com.parse.ParseUser;
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
-/**
- * Created by Jus on 3/24/2015.
- */
 public class Account_Fragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";

@@ -26,9 +26,6 @@ import java.util.List;
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
-/**
- * Created by Dane on 3/24/2015.
- */
 public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelectedListener{
     private ListView feedView;
     private int option;

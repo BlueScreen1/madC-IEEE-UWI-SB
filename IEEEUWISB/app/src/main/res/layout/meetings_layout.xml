@@ -14,19 +14,69 @@
         android:layout_marginLeft="10dp"
         android:id="@+id/upMeetings" />
 
-    <TextView
+    <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/upmeeting"
-        android:layout_gravity="center_horizontal" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/upmeetingname"
+            android:layout_marginTop="5dp"
+                android:layout_column="0" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/timer"
+                android:layout_marginTop="5dp"
+                android:layout_column="20" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/upmeetinglocation"
+                android:layout_marginTop="5dp"
+                android:layout_column="0" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginTop="5dp"
+                android:id="@+id/upmeetingdate"
+                android:layout_column="0" />
+        </TableRow>
+    </TableLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/timer"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/upmeetingdesc"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:layout_width="250dp"
@@ -35,13 +85,11 @@
         android:text="@string/Past_meetings"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
-        android:id="@+id/pastMeetings"
-        android:layout_below="@id/timer"/>
+        android:id="@+id/pastMeetings"/>
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="202dp"
-        android:id="@+id/pastmeetings_list"
-        android:layout_weight="0.89" />
+        android:layout_height="833dp"
+        android:id="@+id/pastmeetings_list" />
 
 </LinearLayout>
