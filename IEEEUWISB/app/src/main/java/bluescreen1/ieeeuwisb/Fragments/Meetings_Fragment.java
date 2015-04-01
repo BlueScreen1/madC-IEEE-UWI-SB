@@ -33,7 +33,6 @@ public class Meetings_Fragment  extends Fragment {
     TextView upcomingMeetings;
     TextView timer;
     ArrayList<String> datesPast = new ArrayList<>();
-    //ArrayList<String> datesUpc = new ArrayList<>();
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -49,28 +48,6 @@ public class Meetings_Fragment  extends Fragment {
 
     }
 
-/*    private void get_data2(List<ParseObject> parseList){
-
-//        for(ParseObject p: parseList){
-
-            upcomingMeetings.setText(query);
-            datesUpc.add(p.getString("topic"));
-            datesUpc.add(p.getDate("date").toString());
-            counter = new CountDownTimer(p.getDate("date").getTime(),1000){
-                @Override
-                public void onTick(long millsUntilFinished){
-                    timer.setText((millsUntilFinished/(1000*60*60)%24) + " hours remaining");
-                }
-                @Override
-                public void onFinish(){
-                    timer.setText("Happening now");
-                }
-            };
-            counter.start();
-
-        }*/
-     //   upcomingMeetings.setAdapter(new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,datesUpc));
-   // }
 
     public static Meetings_Fragment newInstance(int sectionNumber) {
         Meetings_Fragment fragment = new Meetings_Fragment();
@@ -106,18 +83,20 @@ public class Meetings_Fragment  extends Fragment {
         query2.findInBackground(new FindCallback() {
             @Override
             public void done(List list, ParseException e) {
-                for (ParseObject p : (List<ParseObject>)list) {
-                    upcomingMeetings.setText(p.getString("topic") +" at " + p.getString("location") + " on " + p.getDate("date").toString());
-
-                    counter = new CountDownTimer(p.getDate("date").getTime(), 1000) {
+                for (final ParseObject p : (List<ParseObject>)list) {
+                    upcomingMeetings.setText(p.getString("topic") +" at " + p.getString("location") + " on " + (p.getDate("date")));
+                                        //p.getDate("date").getTime(),
+                    Date now = new Date();
+                    counter = new CountDownTimer(p.getDate("date").getTime()-now.getTime(), 1000) {
                         @Override
                         public void onTick(long millsUntilFinished) {
+
                             seconds[0] =(int) millsUntilFinished/1000;
                             minutes[0] = seconds[0] /60;
                             seconds[0] %= 60;
                             hours[0] = minutes[0]/60;
                             minutes[0] %= 60;
-                            hours[0] %= 24;
+
 
                             timer.setText(hours[0] + " hours, " + minutes[0] + " minutes, " +seconds[0] + " seconds");
                         }
