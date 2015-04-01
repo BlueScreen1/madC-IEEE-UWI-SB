@@ -25,7 +25,7 @@ public class Edit_User_Fragment extends DialogFragment{
                     .setPositiveButton("Edit User", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
-                            setData();
+                   //         setData();
                             mListener.onEditUserDialogPositiveClick(Edit_User_Fragment.this);
                         }
                     })

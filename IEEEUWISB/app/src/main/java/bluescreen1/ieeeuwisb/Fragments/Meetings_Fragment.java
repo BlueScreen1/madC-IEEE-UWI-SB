@@ -25,9 +25,6 @@ import java.util.List;
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
-/**
- * Created by Jus on 3/24/2015.
- */
 public class Meetings_Fragment  extends Fragment {
 
     CountDownTimer counter;
@@ -91,8 +88,6 @@ public class Meetings_Fragment  extends Fragment {
             @Override
             public void done(List list, ParseException e) {
                 for (final ParseObject p : (List<ParseObject>)list) {
-                    //upcomingMeetings.setText(p.getString("topic") +" at " + p.getString("location") + " on " + (p.getDate("date")));
-                                        //p.getDate("date").getTime(),
                     upcomingMeetings.setText(p.getString("topic"));
                     upcoming_meetings_details.setText(p.getString("location"));
                     Date now = new Date();
@@ -122,12 +117,6 @@ public class Meetings_Fragment  extends Fragment {
             }
 
         });
-       /* query2.findInBackground(new FindCallback() {
-            @Override
-            public void done(List list, ParseException e) {
-                get_data2(list);
-            }
-        });*/
         return rootView;
 
     }

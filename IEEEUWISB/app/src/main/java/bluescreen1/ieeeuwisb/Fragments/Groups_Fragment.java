@@ -16,9 +16,6 @@ import java.util.ArrayList;
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
-/**
- * Created by Dane on 4/1/2015.
- */
 public class Groups_Fragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     ListView groupslistview;
@@ -39,7 +36,6 @@ public class Groups_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.groups_layout, container, false);
         groupslistview = (ListView) rootView.findViewById(R.id.groups_listview);
-        //username.setText(user.getUsername());
         ParseQuery query = new ParseQuery("Groups");
 
 

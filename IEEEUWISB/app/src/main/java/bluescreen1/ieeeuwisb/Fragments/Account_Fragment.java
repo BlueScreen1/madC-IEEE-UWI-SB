@@ -47,7 +47,7 @@ public class Account_Fragment extends Fragment implements Edit_User_Fragment.Edi
         editUser.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                dialog.show(getFragmentManager(), "EditUser");
+            //    dialog.show(getFragmentManager(), "EditUser");
             }
         });
         ParseUser currentUser = ParseUser.getCurrentUser();
@@ -72,23 +72,24 @@ public class Account_Fragment extends Fragment implements Edit_User_Fragment.Edi
 
     @Override
     public void onEditUserDialogPositiveClick(DialogFragment dialog) {
-        ParseUser currentUser = ParseUser.getCurrentUser();
+/*        ParseUser currentUser = ParseUser.getCurrentUser();
         currentUser.setUsername(newname);
         currentUser.setPassword(newpassword);
         currentUser.setEmail(newemail);
-        currentUser.put("ieeenum", newnumber);
+        currentUser.put("ieeenum", newnumber);*/
     }
 
     @Override
     public void onEditUserDialogNegativeClick(DialogFragment dialog) {
-        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_LONG).show();
+     //   Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_LONG).show();
 
     }
 
-    public void editData(String username, String password, String ieeenum, String email){
+ /*   public void editData(String username, String password, String ieeenum, String email){
         newname = username;
         newpassword = password;
         newnumber = ieeenum;
         newemail = email;
     }
+    */
 }
