@@ -40,6 +40,7 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
             // do stuff with the user
             intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
         setContentView(R.layout.activity_login);
         login = (Button) findViewById(R.id.login_button);
@@ -90,6 +91,13 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
         super.onStop();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        // Remove the activity when its off the screen
+        finish();
+    }
 
     @Override
     public void onLoginDialogPositiveClick(DialogFragment dialog) {
@@ -99,6 +107,7 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
                 if (user != null) {
                     Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_LONG).show();
                     startActivity(intent);
+                    finish();
 
                 } else {
                     Toast.makeText(LoginActivity.this, "Fail", Toast.LENGTH_LONG).show();
