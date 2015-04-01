@@ -12,9 +12,6 @@ package bluescreen1.ieeeuwisb.Login;
 
         import bluescreen1.ieeeuwisb.R;
 
-/**
- * Created by Dane on 3/8/2015.
- */
 public class Sign_Up_Fragment extends DialogFragment {
     View root;
 

@@ -10,9 +10,6 @@ import android.widget.TextView;
 
 import bluescreen1.ieeeuwisb.NavigationDrawerFragment.NavItem;
 
-/**
- * Created by Dane on 3/15/2015.
- */
 public class myNavAdapter extends ArrayAdapter<NavItem> {
 
     private final Context context;

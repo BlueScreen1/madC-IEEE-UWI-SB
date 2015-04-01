@@ -17,10 +17,6 @@ import com.parse.SignUpCallback;
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
-
-/**
- * Created by Dane on 3/2/2015.
- */
 public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.SignUpDialogListener, Sign_In_Fragment.LoginDialogListener {
 
     ImageView login_image;
