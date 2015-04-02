@@ -18,6 +18,7 @@
     <string name="Email">Email:</string>
     <string name="IEEENumber">IEEE Number:</string>
     <string name="Groups">Groups:</string>
+    <string name="EditUser">Edit User</string>
 
 
     <!-- IEEE String Constants-->
