@@ -2,34 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acb31428-6235-45c5-b50f-07f60b3d0bdf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/device-2015-04-01-020751.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Fragments/Edit_User_Fragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Fragments/Groups_Fragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/edituser_dialog.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/groups_layout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/groups_list_item.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/past_meetings_listitem.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout-v14/past_meetings_listitem.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/ic_logo_off-web.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/ic_logo_on_web.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Fragments/Account_Fragment.java" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Fragments/Account_Fragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Fragments/Feed_Fragment.java" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Fragments/Feed_Fragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/IEEEUWISB.iml" afterPath="$PROJECT_DIR$/IEEEUWISB/IEEEUWISB.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Login/LoginActivity.java" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Login/LoginActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/MainActivity.java" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Fragments/Meetings_Fragment.java" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Fragments/Meetings_Fragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Login/Sign_In_Fragment.java" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Login/Sign_In_Fragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Login/Sign_Up_Fragment.java" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/Login/Sign_Up_Fragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/account_layout.xml" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/account_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/activity_login.xml" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/activity_login.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/app.iml" afterPath="$PROJECT_DIR$/IEEEUWISB/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/feed_item.xml" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/feed_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/feed_layout.xml" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/feed_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/main_application.java" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/main_application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/meetings_layout.xml" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/layout/meetings_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/.idea/misc.xml" afterPath="$PROJECT_DIR$/IEEEUWISB/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/myNavAdapter.java" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/myNavAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/IEEEUWISB/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/madC-IEEE-UWI-SB.iml" afterPath="$PROJECT_DIR$/.idea/madC-IEEE-UWI-SB.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="madC-IEEE-UWI-SB.iws" />
@@ -53,12 +27,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/IEEEUWISB/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="795">
               <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.0933785" vertical-offset="1263" max-vertical-offset="3000">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,9 +61,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1301" />
-    <option name="height" value="744" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -105,11 +91,18 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView">
-        <subPane />
-      </pane>
       <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="madC-IEEE-UWI-SB" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane" />
     </panes>
   </component>
@@ -228,7 +221,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -238,8 +231,10 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -279,6 +274,14 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/IEEEUWISB/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="795">
+          <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IEEEUWISB/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
           <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
           <folding />
@@ -297,6 +300,16 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="795">
           <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IEEEUWISB/app/src/main/java/bluescreen1/ieeeuwisb/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0933785" vertical-offset="1263" max-vertical-offset="3000">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
