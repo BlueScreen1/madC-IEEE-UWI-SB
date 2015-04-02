@@ -1,8 +1,11 @@
 package bluescreen1.ieeeuwisb.Fragments;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +18,11 @@ import com.parse.ParseUser;
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
-/**
- * Created by Jus on 3/24/2015.
- */
-public class Account_Fragment extends Fragment {
+public class Account_Fragment extends Fragment implements Edit_User_Fragment.Callback {
+    private String newname;
+    private String newpassword;
+    private String newnumber;
+    private String newemail;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -39,12 +43,13 @@ public class Account_Fragment extends Fragment {
         View rootView = inflater.inflate(R.layout.account_layout, container, false);
         TextView username = (TextView) rootView.findViewById(R.id.userName);
         TextView email = (TextView) rootView.findViewById(R.id.userEmail);
-        //username.setText(user.getUsername());
         ImageButton editUser = (ImageButton) rootView.findViewById(R.id.editUser);
         editUser.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Toast.makeText(getActivity(),"Who are you exactly?", Toast.LENGTH_LONG).show();
+               /* Edit_User_Fragment dialog = new Edit_User_Fragment();
+                dialog.setTargetFragment(Account_Fragment.this,1);
+                dialog.show(getFragmentManager(), "EditUser");*/
             }
         });
         ParseUser currentUser = ParseUser.getCurrentUser();
@@ -63,7 +68,49 @@ public class Account_Fragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
+        try {
+            ((MainActivity) activity).onSectionAttached(
+                    getArguments().getInt(ARG_SECTION_NUMBER));
+        //    editUserDialog = (Edit_User_Fragment)activity;
+        }
+        catch (NullPointerException e){
+            throw e;
+
+        }
+    }
+
+/*    @Override
+    public void onEditUserDialogPositiveClick(DialogFragment dialog) {        ParseUser currentUser = ParseUser.getCurrentUser();
+        currentUser.setUsername(newname);
+        currentUser.setPassword(newpassword);
+        currentUser.setEmail(newemail);
+        currentUser.put("ieeenum", newnumber);
+    )
+*/
+ /*   @Override
+    public void onEditUserDialogNegativeClick(DialogFragment dialog) {
+     //   Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_LONG).show();
+
+    }
+*/
+    @Override
+    public void accept() {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        currentUser.setUsername(newname);
+        currentUser.setPassword(newpassword);
+        currentUser.setEmail(newemail);
+        currentUser.put("ieeenum", newnumber);
+    }
+
+    @Override
+    public void cancel() {
+        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_LONG).show();
+    }
+
+    public void editData(String username, String password, String ieeenum, String email){
+        newname = username;
+        newpassword = password;
+        newnumber = ieeenum;
+        newemail = email;
     }
 }

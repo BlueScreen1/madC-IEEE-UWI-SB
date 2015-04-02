@@ -29,9 +29,6 @@ import java.util.List;
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
-/**
- * Created by Dane on 3/24/2015.
- */
 public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelectedListener{
     private ListView feedView;
     private int option = 0;
@@ -147,7 +144,6 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        //Toast.makeText(getActivity(),""+parent.getItemAtPosition(position).toString(),Toast.LENGTH_LONG).show();
         setFilter(position,parent.getItemAtPosition(position).toString() );
         queryDatabase();
     }
@@ -196,15 +192,18 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
            if(convertView == null){
                vi = inflater.inflate(R.layout.feed_item, null);
            }
-
-
             TextView title = (TextView) vi.findViewById(R.id.feed_item_title);
 
             title.setText(getItem(position).get("title").toString());
 
             TextView desc = (TextView) vi.findViewById(R.id.feed_item_desc);
             desc.setText(getItem(position).get("content").toString());
-
+            TextView group = (TextView) vi.findViewById(R.id.feed_item_group);
+            try {
+                group.setText(getItem(position).getString("group"));
+            }catch(NullPointerException e){
+                Toast.makeText(getActivity(),"SKDJAFH",Toast.LENGTH_LONG).show();
+            }
             return vi;
         }
    }

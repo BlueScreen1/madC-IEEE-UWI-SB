@@ -12,9 +12,6 @@ import android.widget.EditText;
 
 import bluescreen1.ieeeuwisb.R;
 
-/**
- * Created by Dane on 3/8/2015.
- */
 public class Sign_In_Fragment extends DialogFragment {
 
     View root;
