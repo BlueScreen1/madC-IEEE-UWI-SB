@@ -1,4 +1,4 @@
-package bluescreen1.ieeeuwisb;
+package bluescreen1.ieeeuwisb.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import bluescreen1.ieeeuwisb.MainActivity;
+import bluescreen1.ieeeuwisb.R;
 
 
 /**
@@ -36,7 +39,12 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            // do stuff with the user
+            intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
         setContentView(R.layout.activity_login);
         login = (Button) findViewById(R.id.login_button);
         signup = (Button) findViewById(R.id.sign_up_button);

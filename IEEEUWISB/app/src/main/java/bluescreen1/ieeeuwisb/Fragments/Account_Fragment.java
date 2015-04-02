@@ -6,8 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.parse.ParseUser;
 
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
@@ -17,7 +20,6 @@ import bluescreen1.ieeeuwisb.R;
  */
 public class Account_Fragment extends Fragment {
 
-    //ParseUser user;
     private static final String ARG_SECTION_NUMBER = "section_number";
 
 
@@ -36,14 +38,25 @@ public class Account_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.account_layout, container, false);
         TextView username = (TextView) rootView.findViewById(R.id.userName);
+        TextView email = (TextView) rootView.findViewById(R.id.userEmail);
         //username.setText(user.getUsername());
-        Button editUser = (Button) rootView.findViewById(R.id.editUser);
+        ImageButton editUser = (ImageButton) rootView.findViewById(R.id.editUser);
         editUser.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
+                Toast.makeText(getActivity(),"Who are you exactly?", Toast.LENGTH_LONG).show();
             }
         });
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            // do stuff with the user
+            username.setText(currentUser.getUsername());
+            email.setText(currentUser.getEmail());
+
+        } else {
+            // show the signup or login screen
+            Toast.makeText(getActivity(),"You aren't signed in",Toast.LENGTH_LONG).show();
+        }
         return rootView;
     }
 
