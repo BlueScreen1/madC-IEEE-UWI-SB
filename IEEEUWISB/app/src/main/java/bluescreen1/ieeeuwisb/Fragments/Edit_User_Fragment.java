@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
 public class Edit_User_Fragment extends DialogFragment{
@@ -78,7 +79,7 @@ public class Edit_User_Fragment extends DialogFragment{
             }
             else {
                 Toast.makeText(getActivity(),"dm", Toast.LENGTH_SHORT).show();
-              //Account_Fragment parent = (Account_Fragment)getActivity();
+               MainActivity parent = (MainActivity)getActivity();
               //parent.editData(username.getText().toString(),password.getText().toString(), ieeenum.getText().toString(), email.getText().toString());
             }
         }
