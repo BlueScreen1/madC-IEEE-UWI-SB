@@ -2,12 +2,14 @@ package bluescreen1.ieeeuwisb.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ import java.util.Formatter;
 import java.util.List;
 
 import bluescreen1.ieeeuwisb.MainActivity;
+import bluescreen1.ieeeuwisb.MeetingDetails;
 import bluescreen1.ieeeuwisb.R;
 
 public class Meetings_Fragment  extends Fragment {
@@ -32,6 +35,7 @@ public class Meetings_Fragment  extends Fragment {
     TextView upcomingMeetings;
     TextView upcoming_meetings_details;
     TextView timer;
+    Intent intent;
     ArrayList<ParseObject> datesPast = new ArrayList<>();
 
     private static final String ARG_SECTION_NUMBER = "section_number";
@@ -116,6 +120,18 @@ public class Meetings_Fragment  extends Fragment {
                 }
             }
 
+        });
+
+        pastMeetings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                intent = new Intent(getActivity(), MeetingDetails.class);
+                intent.putExtra("topic",datesPast.get(position).get("topic").toString());
+                intent.putExtra("Date",datesPast.get(position).get("date").toString());
+                intent.putExtra("desc",datesPast.get(position).get("description").toString());
+                startActivity(intent);
+
+            }
         });
         return rootView;
 

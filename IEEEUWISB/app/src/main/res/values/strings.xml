@@ -98,5 +98,8 @@
         <item>Rasp Pi</item>
 
     </string-array>
+    <string name="title_activity_meeting_details">MeetingDetails</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>
