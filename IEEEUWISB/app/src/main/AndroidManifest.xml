@@ -96,6 +96,10 @@
             android:name=".MeetingDetails"
             android:label="@string/title_activity_meeting_details" >
         </activity>
+        <activity android:name=".Edit_User"
+            android:label="@string/title_activity_edit_user">
+
+            </activity>
     </application>
 
 </manifest>

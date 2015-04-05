@@ -1,6 +1,7 @@
 package bluescreen1.ieeeuwisb.Fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,10 +13,12 @@ import android.widget.Toast;
 
 import com.parse.ParseUser;
 
+import bluescreen1.ieeeuwisb.Edit_User;
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
-public class Account_Fragment extends Fragment implements Edit_User_Fragment.Callback {
+public class Account_Fragment extends Fragment {
+    Intent intent;
     private String newname;
     private String newpassword;
     private String newnumber;
@@ -40,13 +43,13 @@ public class Account_Fragment extends Fragment implements Edit_User_Fragment.Cal
         View rootView = inflater.inflate(R.layout.account_layout, container, false);
         TextView username = (TextView) rootView.findViewById(R.id.userName);
         TextView email = (TextView) rootView.findViewById(R.id.userEmail);
+        TextView number = (TextView) rootView.findViewById(R.id.userIEEE);
         ImageButton editUser = (ImageButton) rootView.findViewById(R.id.editUser);
         editUser.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-               /* Edit_User_Fragment dialog = new Edit_User_Fragment();
-                dialog.setTargetFragment(Account_Fragment.this,1);
-                dialog.show(getFragmentManager(), "EditUser");*/
+                intent = new Intent(getActivity(),Edit_User.class);
+                startActivity(intent);
             }
         });
         ParseUser currentUser = ParseUser.getCurrentUser();
@@ -54,6 +57,7 @@ public class Account_Fragment extends Fragment implements Edit_User_Fragment.Cal
             // do stuff with the user
             username.setText(currentUser.getUsername());
             email.setText(currentUser.getEmail());
+            number.setText(currentUser.getString("ieeenum"));
 
         } else {
             // show the signup or login screen
@@ -68,46 +72,10 @@ public class Account_Fragment extends Fragment implements Edit_User_Fragment.Cal
         try {
             ((MainActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
-        //    editUserDialog = (Edit_User_Fragment)activity;
         }
         catch (NullPointerException e){
             throw e;
 
         }
-    }
-
-/*    @Override
-    public void onEditUserDialogPositiveClick(DialogFragment dialog) {        ParseUser currentUser = ParseUser.getCurrentUser();
-        currentUser.setUsername(newname);
-        currentUser.setPassword(newpassword);
-        currentUser.setEmail(newemail);
-        currentUser.put("ieeenum", newnumber);
-    )
-*/
- /*   @Override
-    public void onEditUserDialogNegativeClick(DialogFragment dialog) {
-     //   Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_LONG).show();
-
-    }
-*/
-    @Override
-    public void accept() {
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        currentUser.setUsername(newname);
-        currentUser.setPassword(newpassword);
-        currentUser.setEmail(newemail);
-        currentUser.put("ieeenum", newnumber);
-    }
-
-    @Override
-    public void cancel() {
-        Toast.makeText(getActivity(), "Cancel", Toast.LENGTH_LONG).show();
-    }
-
-    public void editData(String username, String password, String ieeenum, String email){
-        newname = username;
-        newpassword = password;
-        newnumber = ieeenum;
-        newemail = email;
     }
 }
