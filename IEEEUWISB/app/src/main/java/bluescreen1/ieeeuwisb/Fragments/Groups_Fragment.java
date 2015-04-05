@@ -56,8 +56,8 @@ public class Groups_Fragment extends Fragment {
         groupslistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ParseUser currentUser = ParseUser.getCurrentUser();
-                currentUser.put("Groups",groups.get(position).toString());
+                    ParseUser currentUser = ParseUser.getCurrentUser();
+                    currentUser.put("Groups",groups.get(position).toString());
             }
         });
         return rootView;
