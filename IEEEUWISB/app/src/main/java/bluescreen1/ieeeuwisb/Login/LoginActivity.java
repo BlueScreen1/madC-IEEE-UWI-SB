@@ -18,14 +18,12 @@ import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
 public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.SignUpDialogListener, Sign_In_Fragment.LoginDialogListener {
-
     ImageView login_image;
     private static int logo_state = 0;
     Button login, signup;
     Intent intent;
     private String username = "ERROR";
     private String password = "ERROR";
-
     private String su_username = "ERROR";
     private String su_password = "ERROR";
     private String su_email = "ERROR";
@@ -34,7 +32,6 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             // do stuff with the user
@@ -53,13 +50,11 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
             public void onClick(View v) {
                 if(logo_state == 0) {
                     login_image.setBackgroundResource(R.drawable.uwi_on_final);
-
                 } else {
                     login_image.setBackgroundResource(R.drawable.uwi_off_final);
                 }
                 logo_state += 1;
                 logo_state %=2;
-
             }
         });
         final DialogFragment dialog = new Sign_In_Fragment();
@@ -68,7 +63,6 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
             @Override
             public void onClick(View v) {
                 dialog.show(getSupportFragmentManager(),"SIGNIN");
-
             }
         });
         signup.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +72,6 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
             }
         });
         intent = new Intent(LoginActivity.this, MainActivity.class);
-
     }
 
     @Override
@@ -94,24 +87,20 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
     @Override
     public void onPause() {
         super.onPause();
-
         // Remove the activity when its off the screen
         finish();
     }
 
     @Override
     public void onLoginDialogPositiveClick(DialogFragment dialog) {
-
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             public void done(ParseUser user, ParseException e) {
                 if (user != null) {
                     Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_LONG).show();
                     startActivity(intent);
                     finish();
-
                 } else {
                     Toast.makeText(LoginActivity.this, "Fail", Toast.LENGTH_LONG).show();
-
                 }
             }
         });
@@ -120,7 +109,6 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
     @Override
     public void onLoginDialogNegativeClick(DialogFragment dialog) {
         Toast.makeText(this, "SIGN IN Cancel", Toast.LENGTH_LONG).show();
-
     }
 
     @Override
@@ -129,10 +117,8 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
         user.setUsername(su_username);
         user.setPassword(su_password);
         user.setEmail(su_email);
-
 // other fields can be set just like with ParseObject
         user.put("ieeenum", su_ieeenum);
-
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
@@ -150,9 +136,7 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
         Toast.makeText(this, "SIGN IN Cancel", Toast.LENGTH_LONG).show();
     }
 
-
     public void setData(String username, String Password){
-
         this.username= username;
         this.password = Password;
     }
@@ -163,5 +147,4 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
         su_username = username;
         su_password = password;
     }
-
 }

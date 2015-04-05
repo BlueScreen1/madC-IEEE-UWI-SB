@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,6 @@ public class Groups_Fragment extends Fragment {
     ArrayList<ParseObject> groups = new ArrayList<>();
 
     public Groups_Fragment() {
-
     }
     public static Groups_Fragment newInstance(int sectionNumber) {
         Groups_Fragment fragment = new Groups_Fragment();
@@ -52,7 +53,13 @@ public class Groups_Fragment extends Fragment {
                 }
             }
         });
-
+        groupslistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                currentUser.put("Groups",groups.get(position).toString());
+            }
+        });
         return rootView;
     }
 
@@ -64,30 +71,22 @@ public class Groups_Fragment extends Fragment {
     }
 
     public void set_data(List<ParseObject> lst){
-
         for(ParseObject p: lst){
             groups.add(p);
         }
         groupslistview.setAdapter(new GroupsListAdapter(getActivity(),R.layout.groups_list_item,groups));
-
-
     }
 
     private class GroupsListAdapter extends ArrayAdapter<ParseObject> {
         private Context con;
-
         private ArrayList<ParseObject> values;
         private LayoutInflater inflater;
-
         public GroupsListAdapter(Context context, int resource, ArrayList<ParseObject> objects) {
             super(context, resource, objects);
             this.con = context;
             this.values = objects;
             this.inflater = (LayoutInflater) con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-
         }
-
 
         @Override
         public int getCount() {
@@ -111,19 +110,11 @@ public class Groups_Fragment extends Fragment {
             if(convertView == null){
                 vi = inflater.inflate(R.layout.groups_list_item, null);
             }
-
-
             TextView name = (TextView) vi.findViewById(R.id.groups_name);
-
             name.setText(getItem(position).getString("name"));
-
             TextView id = (TextView) vi.findViewById(R.id.groups_id);
             id.setText(getItem(position).getObjectId());
-
             return vi;
         }
-
     }
 }
-
-

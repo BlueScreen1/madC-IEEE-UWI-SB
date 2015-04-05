@@ -36,6 +36,7 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
     private ArrayList<ParseObject> feedItems =  new ArrayList<>();
     private final String FEED_LABEL = "feed";
     private FeedAdapter feedAdapter;
+    private static final String ARG_SECTION_NUMBER = "section_number";
 
     private void setFilter(int option, String filter){
         this.option = option;
@@ -44,7 +45,6 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
     private void setData(final List<ParseObject> hi){
         feedItems.clear();
         for(ParseObject x: hi){
-
             feedItems.add(x);
         }
         ParseObject.unpinAllInBackground(FEED_LABEL, hi, new DeleteCallback() {
@@ -53,18 +53,13 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
                     // There was some error.
                     return;
                 }
-
                 // Add the latest results for this query to the cache.
                 ParseObject.pinAllInBackground(FEED_LABEL, hi);
             }
         });
         feedAdapter.notifyDataSetChanged();
         feedView.setAdapter(feedAdapter);
-
     }
-
-    private static final String ARG_SECTION_NUMBER = "section_number";
-
     /**
      * Returns a new instance of this fragment for the given section
      * number.
@@ -77,21 +72,16 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
         return fragment;
     }
 
-
     public Feed_Fragment() {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.feed_layout, container, false);
         Spinner spinner = (Spinner) rootView.findViewById(R.id.feed_spinner);
-
         feedView = (ListView) rootView.findViewById(R.id.feed_list_view);
         feedAdapter = new FeedAdapter(getActivity(), R.layout.feed_item, feedItems );
         feedView.setAdapter(feedAdapter);
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.feed_array, android.R.layout.simple_spinner_item);
 // Specify the layout to use when the list of choices appears
@@ -99,11 +89,9 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
 /* Apply the adapter to the spinner */
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-
         queryDatabase();
         return rootView;
     }
-
 
     public void queryDatabase(){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Messages");
@@ -114,27 +102,22 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
                 query.whereEqualTo("group", filter);
                 query.fromLocalDatastore();
                 Toast.makeText(getActivity(), "" + filter, Toast.LENGTH_LONG).show();
-
                 break;
-
         }
-
         if(!isNetworkAvailable()){
             query.fromLocalDatastore();
         }
-
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(final List<ParseObject> fList, ParseException e) {
                 if (e == null) {
                     setData(fList);
-
                 } else {
                     Log.d("score", "Error: " + e.getMessage());
                 }
             }
         });
-
     }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -150,25 +133,18 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     private class FeedAdapter extends ArrayAdapter<ParseObject> {
         private Context con;
-
         private ArrayList<ParseObject> values;
         private LayoutInflater inflater;
-
-       public FeedAdapter(Context context, int res, ArrayList<ParseObject> values){
+        public FeedAdapter(Context context, int res, ArrayList<ParseObject> values){
            super(context, res, values);
-
            this.con = context;
            this.values = values;
            this.inflater = (LayoutInflater) con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
        }
-
-
 
        @Override
        public int getCount() {
@@ -186,16 +162,13 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
        }
 
        @Override
-        public View getView(int position, View convertView, ViewGroup parent)
-        {
+        public View getView(int position, View convertView, ViewGroup parent){
            View vi = convertView;
            if(convertView == null){
                vi = inflater.inflate(R.layout.feed_item, null);
            }
             TextView title = (TextView) vi.findViewById(R.id.feed_item_title);
-
             title.setText(getItem(position).get("title").toString());
-
             TextView desc = (TextView) vi.findViewById(R.id.feed_item_desc);
             desc.setText(getItem(position).get("content").toString());
             TextView group = (TextView) vi.findViewById(R.id.feed_item_group);
@@ -214,5 +187,4 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
 }

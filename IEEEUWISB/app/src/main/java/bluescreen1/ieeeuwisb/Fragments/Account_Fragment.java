@@ -19,17 +19,11 @@ import bluescreen1.ieeeuwisb.R;
 
 public class Account_Fragment extends Fragment {
     Intent intent;
-    private String newname;
-    private String newpassword;
-    private String newnumber;
-    private String newemail;
-
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-
     public Account_Fragment() {
-
     }
+
     public static Account_Fragment newInstance(int sectionNumber) {
         Account_Fragment fragment = new Account_Fragment();
         Bundle args = new Bundle();
@@ -44,6 +38,7 @@ public class Account_Fragment extends Fragment {
         TextView username = (TextView) rootView.findViewById(R.id.userName);
         TextView email = (TextView) rootView.findViewById(R.id.userEmail);
         TextView number = (TextView) rootView.findViewById(R.id.userIEEE);
+        TextView groups = (TextView) rootView.findViewById(R.id.userGroups);
         ImageButton editUser = (ImageButton) rootView.findViewById(R.id.editUser);
         editUser.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -58,7 +53,7 @@ public class Account_Fragment extends Fragment {
             username.setText(currentUser.getUsername());
             email.setText(currentUser.getEmail());
             number.setText(currentUser.getString("ieeenum"));
-
+            groups.setText(currentUser.getString("Groups"));
         } else {
             // show the signup or login screen
             Toast.makeText(getActivity(),"You aren't signed in",Toast.LENGTH_LONG).show();
@@ -75,7 +70,6 @@ public class Account_Fragment extends Fragment {
         }
         catch (NullPointerException e){
             throw e;
-
         }
     }
 }

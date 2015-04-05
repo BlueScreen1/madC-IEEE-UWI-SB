@@ -37,6 +37,10 @@ public class Edit_User extends ActionBarActivity {
         confirmpassword = (EditText)findViewById(R.id.editpassword2);
         accept = (Button) findViewById(R.id.acceptbutton);
         cancel = (Button) findViewById(R.id.cancelbutton);
+        final ParseUser nowuser = ParseUser.getCurrentUser();
+        username.setText(nowuser.getUsername());
+        email.setText(nowuser.getEmail());
+        ieeenumber.setText(nowuser.getString("ieeenum").toString());
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,10 +55,8 @@ public class Edit_User extends ActionBarActivity {
                 } else if (!(confirmpassword.getText().toString().equals(password.getText().toString()))) {
                     Toast.makeText(getBaseContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
                 } else {
-
-                    ParseUser previousUser = ParseUser.getCurrentUser();
                     try {
-                        previousUser.delete();
+                        nowuser.delete();
                     } catch (com.parse.ParseException e) {
                         e.printStackTrace();
                     }
