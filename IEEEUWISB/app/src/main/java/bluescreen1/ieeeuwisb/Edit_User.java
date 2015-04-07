@@ -11,11 +11,6 @@ import android.widget.Toast;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-import java.text.ParseException;
-
-import bluescreen1.ieeeuwisb.Fragments.Account_Fragment;
-import bluescreen1.ieeeuwisb.Login.LoginActivity;
-
 public class Edit_User extends ActionBarActivity {
     EditText username;
     EditText email;
@@ -40,7 +35,12 @@ public class Edit_User extends ActionBarActivity {
         final ParseUser nowuser = ParseUser.getCurrentUser();
         username.setText(nowuser.getUsername());
         email.setText(nowuser.getEmail());
-        ieeenumber.setText(nowuser.getString("ieeenum").toString());
+
+        try {
+            ieeenumber.setText(nowuser.getString("ieeenum").toString());
+        }catch(NullPointerException e){
+
+        }
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
