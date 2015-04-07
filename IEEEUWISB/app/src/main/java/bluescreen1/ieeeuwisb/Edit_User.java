@@ -45,28 +45,10 @@ public class Edit_User extends ActionBarActivity {
                 } else if (email.getText().toString().isEmpty() || !(email.getText().toString().contains("@"))) {
                     Toast.makeText(getBaseContext(), "Invalid email", Toast.LENGTH_SHORT).show();
                 } else {
-/*                    String password = nowuser.getString("password");
-                    Log.d(password,"password");
-                    try {
-                        nowuser.delete();
-                    } catch (com.parse.ParseException e) {
-                        e.printStackTrace();
-                    }
-                    ParseUser user = new ParseUser();*/
                     nowuser.setUsername(username.getText().toString());
                     nowuser.setEmail(email.getText().toString());
                     nowuser.put("ieeenum", ieeenumber.getText().toString());
                     nowuser.saveInBackground();
-                    /*nowuser.signUpInBackground(new SignUpCallback() {
-                        public void done(com.parse.ParseException e) {
-                            if (e == null) {
-                                Toast.makeText(getBaseContext(), "Yay you are registered", Toast.LENGTH_LONG).show();
-                            } else {
-                                // Sign up didn't succeed. Look at the ParseException
-                                // to figure out what went wrong
-                            }
-                        }
-                    });*/
                     Toast.makeText(Edit_User.this, "User Details changed", Toast.LENGTH_SHORT).show();
                     intent = new Intent(v.getContext(), MainActivity.class);
                     startActivity(intent);

@@ -23,7 +23,7 @@
 
     <!-- IEEE String Constants-->
     <string name="what_ieee">What is IEEE?</string>
-    <string name="what_ieee_description">The IEEE (Institute of Electrical and Electronics Engineers) is "the world's largest technical professional society --promoting the development and application of electrotechnology and allied sciences for the benefit of humanity, the advancement of the profession, and the well-being of our members."</string>
+    <string name="what_ieee_description">IEEE (Institute of Electrical and Electronics Engineers) is "the world's largest technical professional society --promoting the development and application of electrotechnology and allied sciences for the benefit of humanity, the advancement of the profession, and the well-being of our members."</string>
     <string name="benefits_ieee">What are the benefits of IEEE membership?</string>
     <string name="benefits_ieee_description">As a student member of the IEEE you will be afforded a multitude of resources such as:\n
     &#8226; Access to IEEE student competitions.\n
@@ -34,7 +34,7 @@
     <string name="what_societies_ieee">What societies can I be a part of?</string>
 
     <string name="societies_list_1">
-        &#8226; IEEE Aerospace and Electronic Systems Society\n
+        &#32;&#8226; IEEE Aerospace and Electronic Systems Society\n
         &#8226; IEEE Antennas and Propagation Society\n
         &#8226; IEEE Broadcast Technology Society\n
         &#8226; IEEE Communications Society\n
@@ -56,7 +56,7 @@
         &#8226; IEEE Ultrasonics, Ferroelectrics, and Frequency Control Society\n
     </string>
     <string name="societies_list_2">
-       &#8226;  IEEE Instrumentation and Measurement Society\n
+       &#32; &#8226;  IEEE Instrumentation and Measurement Society\n
        &#8226;  IEEE Intelligent Transportation Systems Society\n
        &#8226;  IEEE Magnetics Society\n
        &#8226;  IEEE Microwave Theory and Techniques Society\n
