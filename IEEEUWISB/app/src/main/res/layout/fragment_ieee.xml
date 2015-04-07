@@ -18,20 +18,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="197dp"
             android:layout_height="wrap_content"
             android:text="@string/what_ieee"
-            style="@style/IEEEHeading" />
+            style="@style/IEEEHeading"
+            android:layout_gravity="center" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/what_ieee_description"
             style="@style/IEEEDescription"/>
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="317dp"
             android:layout_height="wrap_content"
             android:text="@string/benefits_ieee"
-            style="@style/IEEEHeading"/>
+            style="@style/IEEEHeading"
+            android:layout_gravity="center" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,9 +45,10 @@
                 android:text="@string/what_societies_ieee"
                 style="@style/IEEEHeading" />
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="362dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -61,12 +64,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/how_join"
-                style="@style/IEEEHeading" />
+                style="@style/IEEEHeading"
+                android:layout_gravity="center" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/how_join_desctiption"
-                style="@style/IEEEDescription"/>
+                style="@style/IEEEDescription"
+                android:layout_gravity="center" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
