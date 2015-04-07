@@ -102,5 +102,6 @@
     <string name="title_activity_edit_user">EditUser</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="contact_us_EMAIL">EMAIL</string>
 
 </resources>
