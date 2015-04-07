@@ -47,7 +47,7 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
         android:hint="IEEE Number" />
-    <EditText
+    <!--<EditText
         android:id="@+id/editpassword1"
         android:inputType="textPassword"
         android:layout_width="match_parent"
@@ -70,7 +70,7 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif"
         android:hint="Confirm Password"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal" />-->
 
     <TableLayout
         android:layout_width="match_parent"
