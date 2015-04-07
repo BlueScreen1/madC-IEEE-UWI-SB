@@ -16,7 +16,6 @@ public class Edit_User extends ActionBarActivity {
     EditText username;
     EditText email;
     EditText ieeenumber;
-    private String password = "derp";
     Button accept;
     Button cancel;
     Intent intent;
@@ -48,7 +47,7 @@ public class Edit_User extends ActionBarActivity {
                 } else if (email.getText().toString().isEmpty() || !(email.getText().toString().contains("@"))) {
                     Toast.makeText(getBaseContext(), "Invalid email", Toast.LENGTH_SHORT).show();
                 } else {
-/*                    password = nowuser.
+/*                    String password = nowuser.getString("password");
                     Log.d(password,"password");
                     try {
                         nowuser.delete();
