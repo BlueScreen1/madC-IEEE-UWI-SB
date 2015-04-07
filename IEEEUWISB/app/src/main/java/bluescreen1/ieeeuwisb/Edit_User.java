@@ -3,14 +3,12 @@ package bluescreen1.ieeeuwisb;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
 public class Edit_User extends ActionBarActivity {
     EditText username;
@@ -58,6 +56,7 @@ public class Edit_User extends ActionBarActivity {
                     nowuser.setUsername(username.getText().toString());
                     nowuser.setEmail(email.getText().toString());
                     nowuser.put("ieeenum", ieeenumber.getText().toString());
+                    nowuser.saveInBackground();
                     /*nowuser.signUpInBackground(new SignUpCallback() {
                         public void done(com.parse.ParseException e) {
                             if (e == null) {

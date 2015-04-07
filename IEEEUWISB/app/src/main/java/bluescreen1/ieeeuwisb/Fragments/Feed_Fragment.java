@@ -22,6 +22,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
     private ListView feedView;
     private int option = 0;
     private String filter;
+    ArrayList<String> groups = new ArrayList<>();
     private ArrayList<ParseObject> feedItems =  new ArrayList<>();
     private final String FEED_LABEL = "feed";
     private FeedAdapter feedAdapter;
@@ -82,13 +84,24 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
         feedView = (ListView) rootView.findViewById(R.id.feed_list_view);
         feedAdapter = new FeedAdapter(getActivity(), R.layout.feed_item, feedItems );
         feedView.setAdapter(feedAdapter);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.feed_array, android.R.layout.simple_spinner_item);
+        ParseUser user = ParseUser.getCurrentUser();
+        try {
+            for(Object x: user.getList("Groups")){
+
+                groups.add((String)x);
+            }
+            Toast.makeText(getActivity(),""+groups.size(),Toast.LENGTH_LONG).show();
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
+                    android.R.layout.simple_spinner_item, (String[])groups.toArray());
 // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
 /* Apply the adapter to the spinner */
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+            spinner.setAdapter(adapter);
+            spinner.setOnItemSelectedListener(this);
+        }catch(NullPointerException e) {
+
+        }
         queryDatabase();
         return rootView;
     }
@@ -187,4 +200,11 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
+    private void setGroups(List<Object> a){
+        for(Object x: a){
+            groups.add((String)x);
+        }
+    }
+
 }
