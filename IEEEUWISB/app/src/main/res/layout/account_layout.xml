@@ -113,7 +113,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="General, Android, Software"
                 android:textColor="@color/light_grey"
                 android:gravity="center"
                 android:id="@+id/userGroups"

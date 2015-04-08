@@ -1,6 +1,5 @@
 package bluescreen1.ieeeuwisb;
 
-
 import android.content.Context;
 import android.content.Intent;
 

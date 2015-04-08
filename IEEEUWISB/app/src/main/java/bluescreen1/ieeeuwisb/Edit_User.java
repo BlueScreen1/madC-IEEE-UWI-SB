@@ -67,7 +67,6 @@ public class Edit_User extends ActionBarActivity {
     }
 
     public Edit_User() {
-
     }
 
     @Override
@@ -81,5 +80,4 @@ public class Edit_User extends ActionBarActivity {
         super.onStop();
         finish();
     }
-
 }

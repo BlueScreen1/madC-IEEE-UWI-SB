@@ -27,6 +27,7 @@ import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
 public class Groups_Fragment extends Fragment {
+
     private static final String ARG_SECTION_NUMBER = "section_number";
     ListView groupslistview;
     ArrayList<ParseObject> groups = new ArrayList<>();
@@ -78,8 +79,7 @@ public class Groups_Fragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
+        ((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
     public void set_data(List<ParseObject> lst){

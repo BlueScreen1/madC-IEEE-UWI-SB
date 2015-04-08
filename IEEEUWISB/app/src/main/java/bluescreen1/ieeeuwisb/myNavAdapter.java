@@ -26,17 +26,12 @@ public class myNavAdapter extends ArrayAdapter<NavItem> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
-
+    public View getView(int position, View convertView, ViewGroup parent){
         ImageView imageView = (ImageView) convertView.findViewById(R.id.navDrawerImageView);
         TextView textView = (TextView) convertView.findViewById(R.id.navDrawerTextView);
-
         NavItem choice = data[position];
-
         imageView.setImageResource(choice.icon);
         textView.setText(choice.name);
-
         return v;
     }
 }
