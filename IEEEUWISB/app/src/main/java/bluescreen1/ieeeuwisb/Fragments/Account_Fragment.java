@@ -18,6 +18,7 @@ import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
 public class Account_Fragment extends Fragment {
+
     Intent intent;
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -53,7 +54,7 @@ public class Account_Fragment extends Fragment {
             username.setText(currentUser.getUsername());
             email.setText(currentUser.getEmail());
             number.setText(currentUser.getString("ieeenum"));
-            groups.setText(currentUser.getString("Groups"));
+            groups.setText(currentUser.getList("Groups").toString());
         } else {
             // show the signup or login screen
             Toast.makeText(getActivity(),"You aren't signed in",Toast.LENGTH_LONG).show();
@@ -65,8 +66,7 @@ public class Account_Fragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            ((MainActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
+            ((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
         }
         catch (NullPointerException e){
             throw e;

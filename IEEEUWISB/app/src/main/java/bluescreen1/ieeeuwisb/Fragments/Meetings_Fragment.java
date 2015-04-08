@@ -29,6 +29,7 @@ import bluescreen1.ieeeuwisb.MeetingDetails;
 import bluescreen1.ieeeuwisb.R;
 
 public class Meetings_Fragment  extends Fragment {
+
     CountDownTimer counter;
     ListView pastMeetings;
     TextView upcomingMeetings;
@@ -124,8 +125,7 @@ public class Meetings_Fragment  extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
+        ((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
     private class PastListAdapter extends ArrayAdapter<ParseObject> {

@@ -31,6 +31,7 @@ import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
 public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelectedListener{
+
     private ListView feedView;
     private int option = 0;
     private String filter;
@@ -91,8 +92,7 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
                 groups.add((String)x);
             }
             Toast.makeText(getActivity(),""+groups.size(),Toast.LENGTH_LONG).show();
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
-                    android.R.layout.simple_spinner_item, groups);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item, groups);
 // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -100,7 +100,6 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
             spinner.setAdapter(adapter);
             spinner.setOnItemSelectedListener(this);
         }catch(NullPointerException e) {
-
         }
         queryDatabase();
         return rootView;
@@ -134,8 +133,7 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
+        ((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
     @Override
@@ -188,7 +186,7 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
             try {
                 group.setText(getItem(position).getString("group"));
             }catch(NullPointerException e){
-                Toast.makeText(getActivity(),"SKDJAFH",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),"Null",Toast.LENGTH_LONG).show();
             }
             return vi;
         }
@@ -206,5 +204,4 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
             groups.add((String)x);
         }
     }
-
 }

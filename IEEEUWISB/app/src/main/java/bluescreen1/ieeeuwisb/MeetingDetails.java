@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class MeetingDetails extends ActionBarActivity {
 
     TextView topic,date, desc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +22,6 @@ public class MeetingDetails extends ActionBarActivity {
         date.setText(getIntent().getStringExtra("Date"));
         desc.setText(getIntent().getStringExtra("desc"));
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,12 +36,10 @@ public class MeetingDetails extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

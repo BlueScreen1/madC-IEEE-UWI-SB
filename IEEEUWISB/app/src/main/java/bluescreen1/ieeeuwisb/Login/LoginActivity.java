@@ -20,6 +20,7 @@ import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
 public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.SignUpDialogListener, Sign_In_Fragment.LoginDialogListener {
+
     ImageView login_image;
     private static int logo_state = 0;
     Button login, signup;
@@ -110,7 +111,7 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
 
     @Override
     public void onLoginDialogNegativeClick(DialogFragment dialog) {
-        Toast.makeText(this, "SIGN IN Cancel", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Sign In Cancel", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -127,7 +128,7 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
-                    Toast.makeText(LoginActivity.this, "Yay you are registered", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "You are now registered", Toast.LENGTH_LONG).show();
                 } else {
                     // Sign up didn't succeed. Look at the ParseException
                     // to figure out what went wrong
@@ -138,7 +139,7 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
 
     @Override
     public void onSignUpDialogNegativeClick(DialogFragment dialog) {
-        Toast.makeText(this, "SIGN IN Cancel", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Sign In Cancel", Toast.LENGTH_LONG).show();
     }
 
     public void setData(String username, String Password){

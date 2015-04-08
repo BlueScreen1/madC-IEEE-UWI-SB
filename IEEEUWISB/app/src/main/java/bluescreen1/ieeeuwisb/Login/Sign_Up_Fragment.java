@@ -1,5 +1,5 @@
 package bluescreen1.ieeeuwisb.Login;
-        import android.app.Activity;
+import android.app.Activity;
         import android.app.AlertDialog;
         import android.app.Dialog;
         import android.content.DialogInterface;
@@ -13,6 +13,7 @@ package bluescreen1.ieeeuwisb.Login;
         import bluescreen1.ieeeuwisb.R;
 
 public class Sign_Up_Fragment extends DialogFragment {
+
     View root;
 
     @Override
@@ -45,7 +46,6 @@ public class Sign_Up_Fragment extends DialogFragment {
 
         public void onSignUpDialogNegativeClick(DialogFragment dialog);
     }
-
     // Use this instance of the interface to deliver action events
     SignUpDialogListener mListener;
 
@@ -58,8 +58,7 @@ public class Sign_Up_Fragment extends DialogFragment {
             mListener = (SignUpDialogListener) activity;
         } catch (ClassCastException e) {
 // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(activity.toString()
-                    + " must implement NoticeDialogListener");
+            throw new ClassCastException(activity.toString() + " must implement NoticeDialogListener");
         }
     }
 
