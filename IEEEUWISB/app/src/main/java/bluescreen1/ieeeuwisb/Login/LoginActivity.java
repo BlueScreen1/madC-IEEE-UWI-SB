@@ -14,6 +14,8 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+import java.util.ArrayList;
+
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
@@ -119,6 +121,9 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
         user.setEmail(su_email);
 // other fields can be set just like with ParseObject
         user.put("ieeenum", su_ieeenum);
+        ArrayList<String> groups = new ArrayList<String>();
+        groups.add("General");
+        user.put("Groups",groups);
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
