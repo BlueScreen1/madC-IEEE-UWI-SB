@@ -11,12 +11,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +59,17 @@ public class Groups_Fragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     ParseUser currentUser = ParseUser.getCurrentUser();
-                    currentUser.put("Groups",groups.get(position).toString());
+                    ArrayList<String> groups2 = new ArrayList<String>();
+                    groups2 = (ArrayList<String>)currentUser.get("Groups");
+                    groups2.add(groups.get(position).getString("name"));
+                    currentUser.put("Groups",groups2);
+                    currentUser.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            Toast.makeText(getActivity(), "Updated", Toast.LENGTH_LONG).show();
+                        }
+                    });
+
             }
         });
         return rootView;

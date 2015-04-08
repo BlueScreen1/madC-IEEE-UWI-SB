@@ -92,7 +92,7 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
             }
             Toast.makeText(getActivity(),""+groups.size(),Toast.LENGTH_LONG).show();
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
-                    android.R.layout.simple_spinner_item, (String[])groups.toArray());
+                    android.R.layout.simple_spinner_item, groups);
 // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
