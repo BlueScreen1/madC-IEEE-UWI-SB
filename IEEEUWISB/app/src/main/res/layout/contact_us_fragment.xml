@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:text="@string/contact_us_EMAIL"
         android:textAllCaps="true"
+        android:layout_marginTop="30dp"
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center_vertical"/>
@@ -66,6 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Feedback"
+        android:layout_marginTop="10dp"
         android:textAllCaps="true"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -74,16 +76,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:lines="1"
-    android:hint="Title"
-    />
+    android:layout_marginTop="10dp"
+    android:hint="@string/subjectline"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lines="5"
-        android:hint="Details"
-        android:gravity="top"
-        />
+        android:hint="@string/details"
+        android:layout_marginTop="10dp"
+        android:gravity="top"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -91,6 +93,8 @@
         android:text="@string/send_but"
         android:padding="15dp"
         android:background="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
         android:textColor="@color/light_blue"/>
 
 

@@ -109,5 +109,7 @@
     <string name="Feedback">Feedback</string>
     <string name="send">Send</string>
     <string name="send_but">Send</string>
+    <string name="subjectline">Subject Line</string>
+    <string name="details">Details</string>
 
 </resources>

@@ -10,15 +10,11 @@ import android.view.ViewGroup;
 import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
-/**
- * Created by Dane on 4/7/2015.
- */
 public class Contact_Us_Fragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     public Contact_Us_Fragment(){
-
     }
 
     public static Contact_Us_Fragment newInstance(int sectionNumber){
@@ -28,7 +24,6 @@ public class Contact_Us_Fragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,12 +35,10 @@ public class Contact_Us_Fragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            ((MainActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
+            ((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
         }
         catch (NullPointerException e){
             throw e;
         }
     }
-
 }
