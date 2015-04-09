@@ -241,9 +241,6 @@ public class NavigationDrawerFragment extends Fragment {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        if (item.getItemId() == R.id.action_example) {
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
