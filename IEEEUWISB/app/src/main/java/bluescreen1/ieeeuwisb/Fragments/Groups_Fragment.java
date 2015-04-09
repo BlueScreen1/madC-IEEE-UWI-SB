@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,21 +62,24 @@ public class Groups_Fragment extends Fragment {
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 ArrayList<String> groups2 = new ArrayList<String>();
                 groups2 = (ArrayList<String>) currentUser.get("Groups");
+
                 if (groups2.contains(groups.get(position).getString("name"))) {
                     groups2.remove(groups.get(position).getString("name"));
-                    parent.getChildAt(position).setBackgroundResource(R.color.white);
+                    parent.getChildAt(position).setBackgroundResource(R.color.beanred);
+                    Toast.makeText(getActivity(), groups.get(position).getString("name") + " was removed", Toast.LENGTH_SHORT).show();
                 } else {
                     groups2.add(groups.get(position).getString("name"));
                     parent.getChildAt(position).setBackgroundResource(R.color.green);
+                    Toast.makeText(getActivity(), groups.get(position).getString("name") + " was added", Toast.LENGTH_SHORT).show();
                 }
                     currentUser.put("Groups", groups2);
                     currentUser.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(ParseException e) {
-                            Toast.makeText(getActivity(), "Updated", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
+
         });
         return rootView;
     }
