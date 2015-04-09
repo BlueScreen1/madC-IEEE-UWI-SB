@@ -1,6 +1,7 @@
 package bluescreen1.ieeeuwisb;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,23 +13,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.parse.ParseUser;
 
 import bluescreen1.ieeeuwisb.Fragments.Account_Fragment;
+import bluescreen1.ieeeuwisb.Fragments.Contact_Us_Fragment;
 import bluescreen1.ieeeuwisb.Fragments.Feed_Fragment;
 import bluescreen1.ieeeuwisb.Fragments.Groups_Fragment;
 import bluescreen1.ieeeuwisb.Fragments.IEEE_Fragment;
 import bluescreen1.ieeeuwisb.Fragments.Meetings_Fragment;
+import bluescreen1.ieeeuwisb.Login.LoginActivity;
 
-
-public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
     public static final String[] headings = new String[] {"Account", "Feed", "Groups", "IEEE", "Meetings", "Contact Us"};
-
+    private Intent intent;
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
@@ -38,16 +42,13 @@ public class MainActivity extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
-
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
               (DrawerLayout) findViewById(R.id.drawer_layout));
-
         mNavigationDrawerFragment.selectItem(1);
     }
 
@@ -56,63 +57,36 @@ public class MainActivity extends ActionBarActivity
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
         switch (position) {
-
-
             case 0:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, Account_Fragment.newInstance(position + 1))
-                        .commit();
+                fragmentManager.beginTransaction().replace(R.id.container, Account_Fragment.newInstance(position + 1)).commit();
                 break;
-
-
             case 1:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, Feed_Fragment.newInstance(position + 1))
-                        .commit();
+                fragmentManager.beginTransaction().replace(R.id.container, Feed_Fragment.newInstance(position + 1)).commit();
                 break;
-
             case 2:
-                fragmentManager.beginTransaction()
-                          .replace(R.id.container, Groups_Fragment.newInstance(position + 1))
-                         .commit();
+                fragmentManager.beginTransaction().replace(R.id.container, Groups_Fragment.newInstance(position + 1)).commit();
                 break;
-
-
             case 3:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container , IEEE_Fragment.newInstance(position + 1))
-                        .commit();
+                fragmentManager.beginTransaction().replace(R.id.container , IEEE_Fragment.newInstance(position + 1)).commit();
                 break;
             case 4:
+                fragmentManager.beginTransaction().replace(R.id.container, Meetings_Fragment.newInstance(position + 1)).commit();
+                break;
+
+            case 5:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, Meetings_Fragment.newInstance(position + 1))
+                        .replace(R.id.container, Contact_Us_Fragment.newInstance(position + 1))
                         .commit();
                 break;
-            /*case 5:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, ContactUs_Fragment.newInstance())
-                        .commit();
-                        */
+
+
             default:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                        .commit();
+                fragmentManager.beginTransaction().replace(R.id.container, PlaceholderFragment.newInstance(position + 1)).commit();
                 break;
         }
     }
 
     public void onSectionAttached(int number) {
-        /*switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-        }*/
         mTitle = headings[number-1];
     }
 
@@ -122,7 +96,6 @@ public class MainActivity extends ActionBarActivity
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -143,12 +116,16 @@ public class MainActivity extends ActionBarActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            ParseUser currentuser = ParseUser.getCurrentUser();
+            currentuser.logOut();
+            intent = new Intent(this, LoginActivity.class);
+            Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+            finish();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -161,7 +138,6 @@ public class MainActivity extends ActionBarActivity
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
-
         /**
          * Returns a new instance of this fragment for the given section
          * number.
@@ -178,8 +154,7 @@ public class MainActivity extends ActionBarActivity
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
@@ -187,8 +162,7 @@ public class MainActivity extends ActionBarActivity
         @Override
         public void onAttach(Activity activity) {
             super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
+            ((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
 }

@@ -22,6 +22,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +31,15 @@ import bluescreen1.ieeeuwisb.MainActivity;
 import bluescreen1.ieeeuwisb.R;
 
 public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelectedListener{
+
     private ListView feedView;
     private int option = 0;
     private String filter;
+    ArrayList<String> groups = new ArrayList<>();
     private ArrayList<ParseObject> feedItems =  new ArrayList<>();
     private final String FEED_LABEL = "feed";
     private FeedAdapter feedAdapter;
+    private static final String ARG_SECTION_NUMBER = "section_number";
 
     private void setFilter(int option, String filter){
         this.option = option;
@@ -44,7 +48,6 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
     private void setData(final List<ParseObject> hi){
         feedItems.clear();
         for(ParseObject x: hi){
-
             feedItems.add(x);
         }
         ParseObject.unpinAllInBackground(FEED_LABEL, hi, new DeleteCallback() {
@@ -53,18 +56,13 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
                     // There was some error.
                     return;
                 }
-
                 // Add the latest results for this query to the cache.
                 ParseObject.pinAllInBackground(FEED_LABEL, hi);
             }
         });
         feedAdapter.notifyDataSetChanged();
         feedView.setAdapter(feedAdapter);
-
     }
-
-    private static final String ARG_SECTION_NUMBER = "section_number";
-
     /**
      * Returns a new instance of this fragment for the given section
      * number.
@@ -77,33 +75,34 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
         return fragment;
     }
 
-
     public Feed_Fragment() {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.feed_layout, container, false);
         Spinner spinner = (Spinner) rootView.findViewById(R.id.feed_spinner);
-
         feedView = (ListView) rootView.findViewById(R.id.feed_list_view);
         feedAdapter = new FeedAdapter(getActivity(), R.layout.feed_item, feedItems );
         feedView.setAdapter(feedAdapter);
+        ParseUser user = ParseUser.getCurrentUser();
+        try {
+            for(Object x: user.getList("Groups")){
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.feed_array, android.R.layout.simple_spinner_item);
+                groups.add((String)x);
+            }
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_spinner_item, groups);
 // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-/* Apply the adapter to the spinner */
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+/* Apply the adapter to the spinner */
+            spinner.setAdapter(adapter);
+            spinner.setOnItemSelectedListener(this);
+        }catch(NullPointerException e) {
+        }
         queryDatabase();
         return rootView;
     }
-
 
     public void queryDatabase(){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Messages");
@@ -114,32 +113,26 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
                 query.whereEqualTo("group", filter);
                 query.fromLocalDatastore();
                 Toast.makeText(getActivity(), "" + filter, Toast.LENGTH_LONG).show();
-
                 break;
-
         }
-
         if(!isNetworkAvailable()){
             query.fromLocalDatastore();
         }
-
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(final List<ParseObject> fList, ParseException e) {
                 if (e == null) {
                     setData(fList);
-
                 } else {
                     Log.d("score", "Error: " + e.getMessage());
                 }
             }
         });
-
     }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
+        ((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
     @Override
@@ -150,25 +143,18 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     private class FeedAdapter extends ArrayAdapter<ParseObject> {
         private Context con;
-
         private ArrayList<ParseObject> values;
         private LayoutInflater inflater;
-
-       public FeedAdapter(Context context, int res, ArrayList<ParseObject> values){
+        public FeedAdapter(Context context, int res, ArrayList<ParseObject> values){
            super(context, res, values);
-
            this.con = context;
            this.values = values;
            this.inflater = (LayoutInflater) con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
        }
-
-
 
        @Override
        public int getCount() {
@@ -186,23 +172,20 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
        }
 
        @Override
-        public View getView(int position, View convertView, ViewGroup parent)
-        {
+        public View getView(int position, View convertView, ViewGroup parent){
            View vi = convertView;
            if(convertView == null){
                vi = inflater.inflate(R.layout.feed_item, null);
            }
             TextView title = (TextView) vi.findViewById(R.id.feed_item_title);
-
             title.setText(getItem(position).get("title").toString());
-
             TextView desc = (TextView) vi.findViewById(R.id.feed_item_desc);
             desc.setText(getItem(position).get("content").toString());
             TextView group = (TextView) vi.findViewById(R.id.feed_item_group);
             try {
                 group.setText(getItem(position).getString("group"));
             }catch(NullPointerException e){
-                Toast.makeText(getActivity(),"SKDJAFH",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(),"Null",Toast.LENGTH_LONG).show();
             }
             return vi;
         }
@@ -215,4 +198,9 @@ public class Feed_Fragment extends Fragment implements AdapterView.OnItemSelecte
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    private void setGroups(List<Object> a){
+        for(Object x: a){
+            groups.add((String)x);
+        }
+    }
 }

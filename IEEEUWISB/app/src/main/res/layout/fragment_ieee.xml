@@ -3,7 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="@color/white"
     android:layout_height="match_parent">
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,55 +17,65 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/what_ieee"
-            style="@style/IEEEHeading" />
+            style="@style/IEEEHeading"
+            android:layout_gravity="center" />
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/what_ieee_description"
+            android:layout_gravity="center"
             style="@style/IEEEDescription"/>
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/benefits_ieee"
-            style="@style/IEEEHeading"/>
+            style="@style/IEEEHeading"
+            android:layout_gravity="center" />
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/benefits_ieee_description"
+                android:layout_gravity="center"
                 style="@style/IEEEDescription"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/what_societies_ieee"
+                android:layout_gravity="center"
                 style="@style/IEEEHeading" />
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="25dp"
                     android:layout_weight="1"
                     android:text="@string/societies_list_1"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
                     android:layout_weight="1"
                     android:text="@string/societies_list_2"/>
             </LinearLayout>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/how_join"
-                style="@style/IEEEHeading" />
+                style="@style/IEEEHeading"
+                android:layout_gravity="center" />
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/how_join_desctiption"
-                style="@style/IEEEDescription"/>
+                style="@style/IEEEDescription"
+                android:layout_gravity="center" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,8 +96,6 @@
                     android:text="@string/renew"
                     style="?android:attr/buttonBarButtonStyle"/>
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

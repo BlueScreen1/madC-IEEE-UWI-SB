@@ -2,12 +2,14 @@ package bluescreen1.ieeeuwisb.Fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ import java.util.Formatter;
 import java.util.List;
 
 import bluescreen1.ieeeuwisb.MainActivity;
+import bluescreen1.ieeeuwisb.MeetingDetails;
 import bluescreen1.ieeeuwisb.R;
 
 public class Meetings_Fragment  extends Fragment {
@@ -32,21 +35,16 @@ public class Meetings_Fragment  extends Fragment {
     TextView upcomingMeetings;
     TextView upcoming_meetings_details;
     TextView timer;
+    Intent intent;
     ArrayList<ParseObject> datesPast = new ArrayList<>();
-
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private void get_data(List<ParseObject> parseList){
-
         for(ParseObject p: parseList){
-
             datesPast.add(p);
         }
-
         pastMeetings.setAdapter(new PastListAdapter(getActivity(), android.R.layout.simple_list_item_1, datesPast));
-
     }
-
 
     public static Meetings_Fragment newInstance(int sectionNumber) {
         Meetings_Fragment fragment = new Meetings_Fragment();
@@ -55,10 +53,9 @@ public class Meetings_Fragment  extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     public Meetings_Fragment(){
-
     }
-
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.meetings_layout, container, false);
@@ -73,11 +70,9 @@ public class Meetings_Fragment  extends Fragment {
         ParseQuery query = new ParseQuery("Meetings");
         ParseQuery query2 = new ParseQuery("Meetings");
         query2.whereGreaterThan("date", new Date());
-
         query.whereLessThan("date", new Date());
         query.addDescendingOrder("date");
         query2.setLimit(1);
-
         query.findInBackground(new FindCallback() {
             @Override
             public void done(List list, ParseException e) {
@@ -94,7 +89,6 @@ public class Meetings_Fragment  extends Fragment {
                     counter = new CountDownTimer(p.getDate("date").getTime()-now.getTime(), 1000) {
                         @Override
                         public void onTick(long millsUntilFinished) {
-
                             seconds[0] =(int) millsUntilFinished/1000;
                             minutes[0] = seconds[0] /60;
                             seconds[0] %= 60;
@@ -102,11 +96,9 @@ public class Meetings_Fragment  extends Fragment {
                             minutes[0] %= 60;
                             days[0] = hours[0]/24;
                             hours[0] %= 24;
-
                             Formatter formatter = new Formatter();
                             timer.setText(formatter.format("%02d:%02d:%02d:%02d", days[0], hours[0], minutes[0], seconds[0]).toString());
                         }
-
                         @Override
                         public void onFinish() {
                             timer.setText("Happening now");
@@ -117,35 +109,35 @@ public class Meetings_Fragment  extends Fragment {
             }
 
         });
+        pastMeetings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                intent = new Intent(getActivity(), MeetingDetails.class);
+                intent.putExtra("topic",datesPast.get(position).get("topic").toString());
+                intent.putExtra("Date",datesPast.get(position).get("date").toString());
+                intent.putExtra("desc",datesPast.get(position).get("description").toString());
+                startActivity(intent);
+            }
+        });
         return rootView;
-
     }
-
-
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
+        ((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
     }
-
 
     private class PastListAdapter extends ArrayAdapter<ParseObject> {
         private Context con;
-
         private ArrayList<ParseObject> values;
         private LayoutInflater inflater;
-
         public PastListAdapter(Context context, int resource, ArrayList<ParseObject> objects) {
             super(context, resource, objects);
             this.con = context;
             this.values = objects;
             this.inflater = (LayoutInflater) con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-
         }
-
 
         @Override
         public int getCount() {
@@ -163,24 +155,17 @@ public class Meetings_Fragment  extends Fragment {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent)
-        {
+        public View getView(int position, View convertView, ViewGroup parent){
             View vi = convertView;
             if(convertView == null){
                 vi = inflater.inflate(R.layout.past_meetings_listitem, null);
             }
-
-
             TextView title = (TextView) vi.findViewById(R.id.pastmeetings_item_topic);
-
             title.setText(getItem(position).get("topic").toString());
-
             TextView desc = (TextView) vi.findViewById(R.id.pastmeetings_item_date);
             Formatter formatter = new Formatter();
             desc.setText(formatter.format("%tF",getItem(position).getDate("date")).toString());
-
             return vi;
         }
-
     }
 }

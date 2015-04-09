@@ -31,7 +31,6 @@ public class Sign_In_Fragment extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         setData();
                         mListener.onLoginDialogPositiveClick(Sign_In_Fragment.this);
-
                         // sign in the user ...
                     }
                 })
@@ -47,7 +46,6 @@ public class Sign_In_Fragment extends DialogFragment {
         public void onLoginDialogPositiveClick(DialogFragment dialog);
         public void onLoginDialogNegativeClick(DialogFragment dialog);
     }
-
     // Use this instance of the interface to deliver action events
     LoginDialogListener mListener;
 
@@ -60,8 +58,7 @@ public class Sign_In_Fragment extends DialogFragment {
             mListener = (LoginDialogListener) activity;
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(activity.toString()
-                    + " must implement NoticeDialogListener");
+            throw new ClassCastException(activity.toString() + " must implement NoticeDialogListener");
         }
     }
 
