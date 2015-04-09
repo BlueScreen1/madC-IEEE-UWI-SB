@@ -46,15 +46,15 @@ public class LoginActivity extends FragmentActivity implements Sign_Up_Fragment.
         login = (Button) findViewById(R.id.login_button);
         signup = (Button) findViewById(R.id.sign_up_button);
         login_image = (ImageView) findViewById(R.id.logo_image);
-        login_image.setBackgroundResource(R.drawable.uwi_on_final);
-        login_image.setBackgroundResource(R.drawable.uwi_off_final);
+        login_image.setImageResource(R.drawable.uwi_on_final);
+        login_image.setImageResource(R.drawable.uwi_off_final);
         login_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(logo_state == 0) {
-                    login_image.setBackgroundResource(R.drawable.uwi_on_final);
+                    login_image.setImageResource(R.drawable.uwi_on_final);
                 } else {
-                    login_image.setBackgroundResource(R.drawable.uwi_off_final);
+                    login_image.setImageResource(R.drawable.uwi_off_final);
                 }
                 logo_state += 1;
                 logo_state %=2;

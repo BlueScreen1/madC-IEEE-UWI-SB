@@ -3,7 +3,7 @@
     android:layout_height="match_parent" android:gravity="center_horizontal"
     android:orientation="vertical" tools:context=".LoginActivity"
     android:maxWidth="400dp"
-    android:background="@color/dark_blue">
+    android:background="@color/medium_blue">
 
     <!-- Login progress -->
 
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="@drawable/uwi_off_final" />
+            android:src="@drawable/uwi_off_final" />
 
     </LinearLayout >
             <LinearLayout android:id="@+id/email_login_form" android:layout_width="match_parent"
