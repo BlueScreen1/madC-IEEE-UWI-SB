@@ -33,6 +33,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     private NavigationDrawerFragment mNavigationDrawerFragment;
     public static final String[] headings = new String[] {"Account", "Feed", "Groups", "IEEE", "Meetings", "Contact Us"};
     private Intent intent;
+    private int position = 0;
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
@@ -56,6 +57,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
+        this.position = position;
         switch (position) {
             case 0:
                 fragmentManager.beginTransaction().replace(R.id.container, Account_Fragment.newInstance(position + 1)).commit();
@@ -117,7 +119,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
             ParseUser currentuser = ParseUser.getCurrentUser();
             currentuser.logOut();
             intent = new Intent(this, LoginActivity.class);
@@ -126,7 +128,45 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             finish();
             return true;
         }
+        if(id == R.id.action_refresh) {
+            refreshFragment();
+            Toast.makeText(this, "Page refreshed", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    private void refreshFragment(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        switch (position) {
+            case 0:
+                fragmentManager.beginTransaction().replace(R.id.container, Account_Fragment.newInstance(position + 1)).commit();
+                break;
+            case 1:
+                fragmentManager.beginTransaction().replace(R.id.container, Feed_Fragment.newInstance(position + 1)).commit();
+                break;
+            case 2:
+                fragmentManager.beginTransaction().replace(R.id.container, Groups_Fragment.newInstance(position + 1)).commit();
+                break;
+            case 3:
+                fragmentManager.beginTransaction().replace(R.id.container , IEEE_Fragment.newInstance(position + 1)).commit();
+                break;
+            case 4:
+                fragmentManager.beginTransaction().replace(R.id.container, Meetings_Fragment.newInstance(position + 1)).commit();
+                break;
+
+            case 5:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, Contact_Us_Fragment.newInstance(position + 1))
+                        .commit();
+                break;
+
+
+            default:
+                fragmentManager.beginTransaction().replace(R.id.container, PlaceholderFragment.newInstance(position + 1)).commit();
+                break;
+        }
     }
 
     /**
@@ -164,5 +204,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             super.onAttach(activity);
             ((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
         }
+
+
     }
 }

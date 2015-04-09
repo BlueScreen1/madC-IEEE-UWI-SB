@@ -86,6 +86,8 @@ public class Meetings_Fragment  extends Fragment {
                     upcomingMeetings.setText(p.getString("topic"));
                     upcoming_meetings_details.setText(p.getString("location"));
                     Date now = new Date();
+
+
                     counter = new CountDownTimer(p.getDate("date").getTime()-now.getTime(), 1000) {
                         @Override
                         public void onTick(long millsUntilFinished) {
