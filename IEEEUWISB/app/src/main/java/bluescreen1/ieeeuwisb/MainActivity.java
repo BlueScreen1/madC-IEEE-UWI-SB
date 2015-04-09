@@ -121,8 +121,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             ParseUser currentuser = ParseUser.getCurrentUser();
             currentuser.logOut();
             intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
             Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
             finish();
             return true;
         }

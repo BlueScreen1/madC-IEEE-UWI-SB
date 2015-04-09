@@ -7,61 +7,55 @@
     android:paddingLeft="10dp"
     android:paddingEnd="10dp"
     android:paddingStart="10dp">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/contact_us_EMAIL"
-        android:textAllCaps="true"
-        android:layout_marginTop="30dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center_vertical"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:paddingEnd="10dp"
-            android:paddingRight="10dp"
-            android:layout_height="50dp"
-            android:textSize="20sp"
-            android:gravity="center_vertical"
-            android:text="@string/branch_email"/>
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/contact_us_email"
+        >
         <ImageView
             android:layout_width="30dp"
             android:layout_gravity="center_vertical"
             android:layout_height="30dp"
             android:src="@mipmap/ic_email"
             android:contentDescription="email button" />
-        </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Phone_secretary"
-        android:textAllCaps="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center_vertical"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:paddingEnd="10dp"
+            android:id="@+id/branch_email_address"
             android:paddingRight="10dp"
             android:layout_height="50dp"
             android:textSize="20sp"
             android:gravity="center_vertical"
-            android:text="@string/secretary_phone_num"/>
+            android:text="@string/branch_email"/>
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/contact_us_phone">
         <ImageView
             android:layout_width="30dp"
             android:layout_gravity="center_vertical"
             android:layout_height="30dp"
             android:src="@mipmap/ic_phone"
             android:contentDescription="email button" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            android:layout_height="50dp"
+            android:id="@+id/branch_phone_number"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:text="@string/secretary_phone_num"/>
+
     </LinearLayout>
 
     <TextView
