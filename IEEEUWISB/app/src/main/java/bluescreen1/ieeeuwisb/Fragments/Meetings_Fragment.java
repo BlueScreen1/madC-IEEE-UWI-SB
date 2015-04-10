@@ -84,7 +84,7 @@ public class Meetings_Fragment  extends Fragment {
             public void done(List list, ParseException e) {
                 for (final ParseObject p : (List<ParseObject>)list) {
                     upcomingMeetings.setText(p.getString("topic"));
-                    upcoming_meetings_details.setText(p.getString("location"));
+                    upcoming_meetings_details.setText(p.getString("location")+ " at " + p.get("date").toString());
                     Date now = new Date();
 
 
